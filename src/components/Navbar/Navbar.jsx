@@ -4,10 +4,10 @@ import { Link, Outlet } from "react-router-dom";
 import StartUp from "../../pages/StartUp/StartUp";
 
 const NavBar = () => {
-  const [showStart, setShowStart] = useState(true);
+  const [showStartUp, setShowStartUp] = useState(true);
 
   const handleSharesClick = () => {
-    setShowStart(false);
+    setShowStartUp(false);
   };
 
   return (
@@ -38,7 +38,7 @@ const NavBar = () => {
       <div>
         <Outlet />
       </div>
-      {showStart && <StartUp />}
+      {showStartUp && <StartUp />}
     </>
   );
 };
