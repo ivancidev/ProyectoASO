@@ -1,7 +1,9 @@
+import Navbar from "../Navbar/Navbar";
+
 function Header() {
   return (
     <>
-      <h1>Hola mundo</h1>
+      <Navbar/>
     </>
   );
 }

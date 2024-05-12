@@ -5,7 +5,15 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        customBlack: '#111213',
+        customHover: '#7DDF07'
+      },
+      fontFamily: {
+        secular: ['Secular One']
+      }
+    },
   },
   plugins: [],
 }
