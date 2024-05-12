@@ -3,7 +3,7 @@ import iconSamba from "./assets/iconSamba.svg";
 import { Link, Outlet } from "react-router-dom";
 import StartUp from "../../pages/StartUp/StartUp";
 
-const NavBar = () => {
+const Navbar = () => {
   const [showStartUp, setShowStartUp] = useState(true);
 
   const handleSharesClick = () => {
@@ -43,4 +43,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+export default Navbar;

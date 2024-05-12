@@ -1,6 +1,6 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import NavBar from "./components/Navbar/NavBar.jsx";
+import Navbar from "./components/Navbar/Navbar.jsx";
 import StartUp from "./pages/StartUp/StartUp.jsx";
 import Shares from "./pages/Shares/Shares.jsx";
 import Identity from "./pages/Identity/Identity.jsx";
@@ -8,7 +8,7 @@ import Identity from "./pages/Identity/Identity.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <NavBar />,
+    element: <Navbar />,
     children: [
       {
         path: "/Start-Up",
