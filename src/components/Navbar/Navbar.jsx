@@ -1,32 +1,46 @@
-import React from "react";
-import iconSamba from './assets/iconSamba.svg';
+import React, { useState } from "react";
+import iconSamba from "./assets/iconSamba.svg";
+import { Link, Outlet } from "react-router-dom";
+import StartUp from "../../pages/StartUp/StartUp";
 
-const Navbar = () => {
+const NavBar = () => {
+  const [showStart, setShowStart] = useState(true);
+
+  const handleSharesClick = () => {
+    setShowStart(false);
+  };
+
   return (
-    <nav className="flex items-center justify-between h-[80px] px-4 py-3 bg-customBlack text-white font-secular font-light">
-      <div className="flex items-center">
-        <img src={iconSamba} alt="Logo" className="h-8 mr-4" />
-        <span className="cursor-pointer">Samba Server</span>
+    <>
+      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between h-[80px] px-4 py-3 bg-customBlack text-white font-secular font-light">
+        <div className="flex items-center">
+          <img src={iconSamba} alt="Logo" className="h-8 mr-4" />
+          <span className="cursor-pointer">Samba Server</span>
+        </div>
+        <ul className="flex items-center space-x-32 mr-28">
+          <li onClick={handleSharesClick}>
+            <Link to={"/Start-Up"} className="hover:text-customHover">
+              Start-Up
+            </Link>
+          </li>
+          <li onClick={handleSharesClick}>
+            <Link to={"/Shares"} className="hover:text-customHover">
+              Shares
+            </Link>
+          </li>
+          <li onClick={handleSharesClick}>
+            <Link to={"/Identity"} className="hover:text-customHover">
+              Identity
+            </Link>
+          </li>
+        </ul>
+      </nav>
+      <div>
+        <Outlet />
       </div>
-      <ul className="flex items-center space-x-32 mr-28">
-        <li>
-          <a href="#" className="hover:text-customHover">
-            Start-Up
-          </a>
-        </li>
-        <li>
-          <a href="#" className="hover:text-customHover">
-            Shares
-          </a>
-        </li>
-        <li>
-          <a href="#" className="hover:text-customHover">
-            Identity
-          </a>
-        </li>
-      </ul>
-    </nav>
+      {showStart && <StartUp />}
+    </>
   );
 };
 
-export default Navbar;
+export default NavBar;
