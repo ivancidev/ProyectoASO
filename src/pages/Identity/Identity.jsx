@@ -1,4 +1,5 @@
 import { useState } from "react";
+import RadioButton from "../../components/RadioButton/RadioButton";
 
 export default function Identity() {
   const [inputValue, setInputValue] = useState("WORKGROUP");
@@ -23,37 +24,9 @@ export default function Identity() {
         <div className="flex items-center">
           <label className="mr-5">Domain Controller</label>
           <div className="flex-col mt-10">
-            <div>
-              <input
-                type="radio"
-                id="option1"
-                name="option"
-                className="mr-2 h-4 w-4 text-lg"
-              />
-              <label htmlFor="option1" className="mr-4">
-                Not a DC
-              </label>
-            </div>
-            <div>
-              <input
-                type="radio"
-                id="option2"
-                name="option"
-                className="mr-2 h-4 w-4 text-lg"
-              />
-              <label htmlFor="option2" className="mr-4">
-                Primary(PDC)
-              </label>
-            </div>
-            <div>
-              <input
-                type="radio"
-                id="option3"
-                name="option"
-                className="mr-2 h-4 w-4 text-lg"
-              />
-              <label htmlFor="option3">Backup(BDC)</label>
-            </div>
+            <RadioButton id= "option1" name= "option" label="Not a DC" />
+            <RadioButton id= "option1" name= "option" label="Not a DC" />
+            <RadioButton id= "option3" name= "option" label="Backup(BDC)" />
           </div>
         </div>
       </div>
