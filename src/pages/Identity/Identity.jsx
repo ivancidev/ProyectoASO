@@ -1,5 +1,5 @@
 import { useState } from "react";
-import RadioButton from "../../components/RadioButton/RadioButton";
+import RadioButton from "../../components/RadioButton/RadioButton.jsx";
 
 export default function Identity() {
   const [inputValue, setInputValue] = useState("WORKGROUP");
