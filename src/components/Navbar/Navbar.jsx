@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import iconSamba from "./assets/iconSamba.svg";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import StartUp from "../../pages/StartUp/StartUp";
 
 const Navbar = () => {
   const [showStartUp, setShowStartUp] = useState(true);
+  const location = useLocation();
+
+  useEffect(() => {
+    setShowStartUp(location.pathname === '/');
+  }, [location.pathname]);
 
   const handleSharesClick = () => {
     setShowStartUp(false);
