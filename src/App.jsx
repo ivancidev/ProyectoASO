@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar/Navbar.jsx";
 import StartUp from "./pages/StartUp/StartUp.jsx";
 import Shares from "./pages/Shares/Shares.jsx";
 import Identity from "./pages/Identity/Identity.jsx";
-
+import Add from "./pages/Add/Add.jsx"
 const router = createBrowserRouter([
   {
     path: "/",
@@ -21,6 +21,10 @@ const router = createBrowserRouter([
       {
         path: "/Identity",
         element: <Identity />
+      },
+      {
+        path: "/Add",
+        element: <Add/>
       }
     ]
   },
