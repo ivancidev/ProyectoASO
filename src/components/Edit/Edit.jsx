@@ -42,7 +42,7 @@ const Edit = () => {
         </div>
         <div className="flex space-x-4 mt-4">
           <Button text={ "Edit" } />
-          <Button text={ "Add" } image={ add } />
+          <Button text={ "Add" } />
           <Button text={ "Delete" } />
         </div>
       </div>
