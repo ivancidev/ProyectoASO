@@ -8,7 +8,8 @@ export default {
     extend: {
       colors: {
         customBlack: '#111213',
-        customHover: '#7DDF07'
+        customHover: '#7DDF07',
+        curtomButton: '#6AD023'
       },
       fontFamily: {
         secular: ['Secular One'],

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import iconSamba from "./assets/iconSamba.svg";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import StartUp from "../../pages/StartUp/StartUp";
+import FooterButton from "../FooterButtons/FooterButtons";
 
 const Navbar = () => {
   const [showStartUp, setShowStartUp] = useState(true);
@@ -47,6 +48,7 @@ const Navbar = () => {
         <Outlet />
       </div>
       {showStartUp && <StartUp />}
+      <FooterButton/>
     </>
   );
 };

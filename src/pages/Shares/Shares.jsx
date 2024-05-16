@@ -90,18 +90,6 @@ export default function Shares() {
             </div>
           </div>             
         </div>
-        <div className="flex items-center justify-between font-roboto text-sm">
-          <button className="bg-customHover w-10 h-10 p-1 text-white rounded-[100px]">?</button>
-          <div className="flex items-center justify-between w-64">
-            <button className="bg-white w-28 h-10 p-1 text-customHover rounded-[100px] flex items-center justify-center border border-[#787A7D]">
-              <p>Cancel</p>
-            </button>
-            <button className="bg-customHover w-28 h-10 p-1 text-white rounded-[100px] flex items-center justify-center">
-              <p>Ok</p>
-            </button>
-            
-          </div>
-        </div>
       </section>
     </>
   );
