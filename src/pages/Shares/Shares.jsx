@@ -5,7 +5,7 @@ import plus from "./assets/plus.svg";
 import edit from "./assets/edit.svg";
 import deletee from "./assets/deletee.svg";
 import minus from "./assets/minus.svg";
-import RadioButton from "../../components/RadioButton";
+import RadioButton from "../../components/RadioButton/RadioButton.jsx";
 import React, { useState, useEffect } from 'react'
 export default function Shares() {
   const [contador,setContador] = useState(0);
@@ -89,18 +89,6 @@ export default function Shares() {
               </button>
             </div>
           </div>             
-        </div>
-        <div className="flex items-center justify-between font-roboto text-sm">
-          <button className="bg-customHover w-10 h-10 p-1 text-white rounded-[100px]">?</button>
-          <div className="flex items-center justify-between w-64">
-            <button className="bg-white w-28 h-10 p-1 text-customHover rounded-[100px] flex items-center justify-center border border-[#787A7D]">
-              <p>Cancel</p>
-            </button>
-            <button className="bg-customHover w-28 h-10 p-1 text-white rounded-[100px] flex items-center justify-center">
-              <p>Ok</p>
-            </button>
-            
-          </div>
         </div>
       </section>
     </>
