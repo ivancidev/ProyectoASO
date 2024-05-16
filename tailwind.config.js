@@ -11,7 +11,8 @@ export default {
         customHover: '#7DDF07'
       },
       fontFamily: {
-        secular: ['Secular One']
+        secular: ['Secular One'],
+        roboto: ['Roboto']
       }
     },
   },
