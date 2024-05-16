@@ -53,10 +53,10 @@ export default function Shares() {
         <div className="flex items-center justify-between font-roboto text-sm">
           <button className="bg-customHover w-28 h-10 p-1 text-white rounded-[100px]">Rename</button>
           <div className="flex items-center justify-evenly w-96">
-            <button className="bg-customHover w-28 h-10 p-1 text-white rounded-[100px] flex items-center justify-center">
+            <Link to = {"/Shares/Add"} className="bg-customHover w-28 h-10 p-1 text-white rounded-[100px] flex items-center justify-center">
               <img src={add} alt="Agregar" className="pr-3"/>
               <p>Add</p>
-            </button>
+            </Link>
             <Link to={"/Shares/Edit"} className="bg-customHover w-28 h-10 p-1 text-white rounded-[100px] flex items-center justify-center">
               <img src={edit} alt="Editar" className="pr-3"/>
               <p>Edit</p>

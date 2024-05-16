@@ -29,7 +29,7 @@ const router = createBrowserRouter([
         element: <Identity />
       },
       {
-        path: "/Add",
+        path: "/Shares/Add",
         element: <Add/>
       }
     ]
