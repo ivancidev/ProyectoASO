@@ -5,7 +5,7 @@ import plus from "./assets/plus.svg";
 import edit from "./assets/edit.svg";
 import deletee from "./assets/deletee.svg";
 import minus from "./assets/minus.svg";
-import RadioButton from "../../components/RadioButton";
+import RadioButton from "../../components/RadioButton/RadioButton.jsx";
 import React, { useState, useEffect } from 'react'
 export default function Shares() {
   const [contador,setContador] = useState(0);
