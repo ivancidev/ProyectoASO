@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar/Navbar.jsx";
 import StartUp from "./pages/StartUp/StartUp.jsx";
 import Shares from "./pages/Shares/Shares.jsx";
 import Identity from "./pages/Identity/Identity.jsx";
+import Edit from "./components/Edit/Edit.jsx";
 
 const router = createBrowserRouter([
   {
@@ -12,17 +13,21 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/Start-Up",
-        element: <StartUp />
-      }, 
+        element: <StartUp />,
+      },
       {
         path: "/Shares",
-        element: <Shares />
+        element: <Shares />,
+      },
+      {
+        path: "/Shares/Edit",
+        element: <Edit />,
       },
       {
         path: "/Identity",
-        element: <Identity />
-      }
-    ]
+        element: <Identity />,
+      },
+    ],
   },
 ]);
 
