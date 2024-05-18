@@ -10,9 +10,9 @@ export default function Identity() {
   };
 
   return (
-    <section className="mt-32 ml-20">
+    <section className="flex-col px-10 mt-32 ml-18">
       <HeaderLine text="Base Settings" />
-      <div className="ml-6">
+      <div className="ml-6 mt-6">
         <div>
           <label className="mr-4">Workgroup or Domain Name:</label>
           <input
