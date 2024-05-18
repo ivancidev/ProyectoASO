@@ -8,15 +8,13 @@ import minus from "./assets/minus.svg";
 import RadioButton from "../../components/RadioButton/RadioButton.jsx";
 import React, { useState, useEffect } from 'react'
 import { Link } from "react-router-dom";
+import HeaderLine from "../../components/SectionHeaderline/HeaderLine.jsx";
 export default function Shares() {
   const [contador,setContador] = useState(0);
   return (
     <>
       <section className="flex-col pt-28 px-10 h-screen text-customBlack">
-        <div className="flex justify-between items-center w-full">
-          <p className="font-secular font-light">Available Shares</p>
-          <hr className="bg-black border-none h-0.5 ml-5 rounded grow"/>
-        </div>
+        <HeaderLine text="Available Shares" />
         <div className="flex justify-end">
           <div className="flex items-center justify-between w-[360px] h-11 border rounded-[28px] px-4 border-[#787A7D]">
             <button>

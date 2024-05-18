@@ -1,12 +1,10 @@
 import Button from "../../components/Button/Button";
+import HeaderLine from "../../components/SectionHeaderline/HeaderLine";
 
 const Edit = () => {
   return (
     <section className="flex-col pt-28 px-10 h-screen text-customBlack">
-      <div className="flex justify-between items-center w-full">
-        <p className="font-secular font-light">Share print$</p>
-        <hr className="bg-black border-none h-0.5 ml-5 rounded grow" />
-      </div>
+      <HeaderLine text="Share print$" />
       <div className="flex flex-col items-center justify-center mt-20">
         <div className="border-2 border-black overflow-hidden w-1/2 h-1/2">
           <div className="flex bg-black text-white">

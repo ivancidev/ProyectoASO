@@ -1,14 +1,12 @@
 import { Outlet } from "react-router-dom";
 import RadioButton from "../../components/RadioButton/RadioButton.jsx";
+import HeaderLine from "../../components/SectionHeaderline/HeaderLine.jsx";
 
 export default function StartUp() {
   return (
     <>
       <section className="space-y-4 mt-14 p-14 justify-start items-start">
-        <div className="items-center flex">
-          <h1 className="text-xl font-bold font-secular">Service Configuration</h1>
-          <hr className="bg-black border-none h-0.5 ml-5 rounded grow"/>
-        </div>
+        <HeaderLine text="Service Configuration" />
         <div>
           Current status:
         </div>
