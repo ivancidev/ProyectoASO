@@ -1,9 +1,9 @@
 import filter from "./assets/filter.svg";
-import search from "./assets/search.svg";
-import add from "./assets/add.svg";
+import search from "../../assets/search.svg";
+import add from "../../assets/add.svg";
 import plus from "./assets/plus.svg";
-import edit from "./assets/edit.svg";
-import deletee from "./assets/deletee.svg";
+import edit from "../../assets/edit.svg";
+import remove from "../../assets/delete.svg";
 import minus from "./assets/minus.svg";
 import RadioButton from "../../components/Buttons/RadioButton.jsx";
 import React, { useState, useEffect } from 'react'
@@ -60,7 +60,7 @@ export default function Shares() {
               <p>Edit</p>
             </Link>
             <button className="bg-customHover w-28 h-10 p-1 text-white rounded-[100px] flex items-center justify-center">
-              <img src={deletee} alt="Eliminar" className="pr-2"/>
+              <img src={remove} alt="Eliminar" className="pr-2"/>
               <p>Delete</p>
             </button>
           </div>

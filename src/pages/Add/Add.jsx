@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import search from "../../pages/Shares/assets/search.svg";
+import search from "../../assets/search.svg";
 import RadioButton from "../../components/Buttons/RadioButton.jsx";
 import TextInput from "../../components/TextInput/TextInput.jsx";
 import { useState } from "react";

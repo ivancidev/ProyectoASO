@@ -1,5 +1,9 @@
 import Button from "../../components/Buttons/Button";
 import HeaderLine from "../../components/SectionHeaderline/HeaderLine";
+import edit from "../../assets/edit.svg";
+import add from "../../assets/add.svg";
+import remove from "../../assets/delete.svg";
+
 
 const Edit = () => {
   return (
@@ -39,9 +43,9 @@ const Edit = () => {
           </div>
         </div>
         <div className="flex space-x-4 mt-4">
-          <Button text={ "Edit" } />
-          <Button text={ "Add" } />
-          <Button text={ "Delete" } />
+          <Button text={ "Edit" } image={edit} />
+          <Button text={ "Add" } image={add} />
+          <Button text={ "Delete" } image={remove} />
         </div>
       </div>
     </section>
