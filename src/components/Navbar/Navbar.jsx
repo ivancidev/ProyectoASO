@@ -28,7 +28,7 @@ const Navbar = () => {
         </div>
         <ul className="flex items-center space-x-32 mr-28">
           <li onClick={() => handleSharesClick("/Start-Up")}>
-            <Link to={"/Start-Up"} className={`hover:text-customHover ${activeLink === "/Start-Up" ? "text-customHover": ""}`}>
+            <Link to={"/Start-Up"} className={`hover:text-customHover ${activeLink === "/Start-Up" || activeLink === "/" ? "text-customHover": ""}`}>
               Start-Up
             </Link>
           </li>
