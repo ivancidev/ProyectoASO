@@ -33,7 +33,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li onClick={() => handleSharesClick("/Shares")}>
-            <Link to={"/Shares"} className={`hover:text-customHover ${activeLink === "/Shares" ? "text-customHove": ""}`}>
+            <Link to={"/Shares"} className={`hover:text-customHover ${activeLink === "/Shares" ? "text-customHover": ""}`}>
               Shares
             </Link>
           </li>
