@@ -1,5 +1,5 @@
 import { useState } from "react";
-import RadioButton from "../../components/RadioButton/RadioButton.jsx";
+import RadioButton from "../../components/Buttons/RadioButton.jsx";
 import HeaderLine from "../../components/SectionHeaderline/HeaderLine.jsx";
 
 export default function Identity() {
