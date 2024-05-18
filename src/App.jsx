@@ -5,7 +5,7 @@ import StartUp from "./pages/StartUp/StartUp.jsx";
 import Shares from "./pages/Shares/Shares.jsx";
 import Identity from "./pages/Identity/Identity.jsx";
 import Add from "./pages/Add/Add.jsx"
-import Edit from "./components/Edit/Edit.jsx";
+import Edit from "./pages/Edit/Edit.jsx";
 
 const router = createBrowserRouter([
   {
