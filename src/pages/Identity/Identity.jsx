@@ -1,5 +1,6 @@
 import { useState } from "react";
-import RadioButton from "../../components/RadioButton/RadioButton.jsx";
+import RadioButton from "../../components/Buttons/RadioButton.jsx";
+import HeaderLine from "../../components/SectionHeaderline/HeaderLine.jsx";
 
 export default function Identity() {
   const [inputValue, setInputValue] = useState("WORKGROUP");
@@ -9,9 +10,9 @@ export default function Identity() {
   };
 
   return (
-    <section className="mt-32 ml-20">
-      <h2 className="font-secular text-[18px]">Base Settings</h2>
-      <div className="ml-6">
+    <section className="flex-col px-10 mt-32 ml-18">
+      <HeaderLine text="Base Settings" />
+      <div className="ml-6 mt-6">
         <div>
           <label className="mr-4">Workgroup or Domain Name:</label>
           <input

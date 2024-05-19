@@ -1,6 +1,6 @@
 const RadioButton = ({ id, name, label }) => {
   return (
-    <div>
+    <div className="mt-1">
       <input
         type="radio"
         name={name}

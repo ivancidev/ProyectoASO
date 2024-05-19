@@ -1,8 +1,9 @@
 import { Outlet } from "react-router-dom";
-import search from "../../pages/Shares/assets/search.svg";
-import RadioButton from "../../components/RadioButton/RadioButton.jsx";
+import search from "../../assets/search.svg";
+import RadioButton from "../../components/Buttons/RadioButton.jsx";
 import TextInput from "../../components/TextInput/TextInput.jsx";
 import { useState } from "react";
+import HeaderLine from "../../components/SectionHeaderline/HeaderLine.jsx";
 export default function StartUp() {
   const [inputValue, setInputValue] = useState(null);
 
@@ -13,10 +14,7 @@ export default function StartUp() {
   return (
     <>
       <section className="space-y-4 mt-14 p-14 justify-start items-start">
-        <div className="items-center flex">
-          <h1 className="text-xl font-bold font-secular">New Share</h1>
-          <hr className="bg-black border-none h-0.5 ml-5 rounded grow"/>
-        </div>
+        <HeaderLine text="New Share" />
         <section className="mx-54 px-56 space-y-1">
           <h3 className="">Identification</h3>
             <TextInput label="Share Name" value={inputValue} onchange={handleChange} />
