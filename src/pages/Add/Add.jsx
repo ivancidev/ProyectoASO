@@ -2,14 +2,8 @@ import { Outlet } from "react-router-dom";
 import search from "../../assets/search.svg";
 import RadioButton from "../../components/Buttons/RadioButton.jsx";
 import TextInput from "../../components/TextInput/TextInput.jsx";
-import { useState } from "react";
 import HeaderLine from "../../components/SectionHeaderline/HeaderLine.jsx";
 export default function StartUp() {
-  const [inputValue, setInputValue] = useState(null);
-
-  const handleChange = (event) => {
-    setInputValue(event.target.value);
-  }
 
   return (
     <>
@@ -17,7 +11,7 @@ export default function StartUp() {
         <HeaderLine text="New Share" />
         <section className="mx-54 px-56 space-y-1">
           <h3 className="">Identification</h3>
-            <TextInput label="Share Name" value={inputValue} onchange={handleChange} />
+            <TextInput label="Share Name" />
             <TextInput label="Share Description"/>
             <section className="flex">
               <label>Share Type</label>

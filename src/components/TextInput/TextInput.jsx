@@ -1,15 +1,23 @@
-const TextInput = ({ label, value, onchange }) => {
-    return (
-      <div className="space-x-6">
-        <label >{label}</label>
-          <input
-            type="text"
-            value={value}
-            onChange={onchange}
-            className="border-2 border-zinc-500 rounded-lg p-1"
-          />
-      </div>
-    );
+import { useState } from "react";
+
+const TextInput = ({ label }) => {
+  const [inputValue, setInputValue] = useState(null);
+
+  const handleChange = (event) => {
+    setInputValue(event.target.value);
   };
-  
-  export default TextInput;
+
+  return (
+    <div className="space-x-6">
+      <label>{label}</label>
+      <input
+        type="text"
+        value={inputValue}
+        onChange={handleChange}
+        className="border-2 border-zinc-500 rounded-lg p-1 focus:outline-none"
+      />
+    </div>
+  );
+};
+
+export default TextInput;

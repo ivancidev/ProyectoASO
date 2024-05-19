@@ -10,24 +10,17 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import HeaderLine from "../../components/SectionHeaderline/HeaderLine.jsx";
 import DeleteConfirmation from "../../modals/DeleteConfirm.jsx";
+import Table from "../../components/Table/Table.jsx";
+
 export default function Shares() {
   const [contador, setContador] = useState(0);
   const [isModalOpen, setModalOpen] = useState(false);
 
-  const handleOpenModal = () => {
-    setModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setModalOpen(false);
-  };
-
   return (
-    <>
       <section className="flex-col pt-28 px-10 h-screen text-customBlack">
         <HeaderLine text="Available Shares" />
         {isModalOpen && (
-          <DeleteConfirmation isOpen={isModalOpen} onClose={handleCloseModal} />
+          <DeleteConfirmation isOpen={isModalOpen} onClose={() => setModalOpen(false)} />
         )}
         <div className="flex justify-end">
           <div className="flex items-center justify-between w-[360px] h-11 border rounded-[28px] px-4 border-[#787A7D]">
@@ -44,29 +37,8 @@ export default function Shares() {
             </button>
           </div>
         </div>
-        <table className="w-full my-5 font-roboto table-auto">
-          <thead className="h-9">
-            <tr className="bg-customBlack text-xs text-white border border-customBlack ">
-              <th className="text-left pl-3">Status</th>
-              <th className="text-left pl-3">Read-Only</th>
-              <th className="text-left pl-3">Name</th>
-              <th className="text-left pl-3">Path</th>
-              <th className="text-left pl-3">Guest Access</th>
-              <th className="text-left pl-3">Comment</th>
-            </tr>
-          </thead>
-          <tbody className="h-44 border border-customBlack">
-            <tr className="text-custumBlack text-xs">
-              <td className="pl-3">Text</td>
-              <td className="pl-3">Text</td>
-              <td className="pl-3">Text</td>
-              <td className="pl-3">Text</td>
-              <td className="pl-3">Text</td>
-              <td className="pl-3">Text</td>
-            </tr>
-          </tbody>
-        </table>
-        <div className="flex items-center justify-between font-roboto text-sm">
+        <Table />
+        <div className="flex items-center justify-between font-roboto text-sm mt-6">
           <button className="bg-customHover w-28 h-10 p-1 text-white rounded-[100px]">
             Rename
           </button>
@@ -85,7 +57,7 @@ export default function Shares() {
               <img src={edit} alt="Editar" className="pr-3" />
               <p>Edit</p>
             </Link>
-            <button onClick={handleOpenModal} className="bg-customHover w-28 h-10 p-1 text-white rounded-[100px] flex items-center justify-center">
+            <button onClick={() => setModalOpen(true)} className="bg-customHover w-28 h-10 p-1 text-white rounded-[100px] flex items-center justify-center">
               <img src={remove} alt="Eliminar" className="pr-2" />
               <p>Delete</p>
             </button>
@@ -127,6 +99,5 @@ export default function Shares() {
           </div>
         </div>
       </section>
-    </>
   );
 }
