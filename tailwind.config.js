@@ -17,7 +17,11 @@ export default {
       },
       backgroundImage: {
         customServer: "url('./src/pages/Login/assets/servers.jpg')",
-      }
+      },
+      backgroundColor: {
+        'green-70': 'rgba(125, 223, 7, 0.7)',
+      },
+
     },
   },
   plugins: [],
