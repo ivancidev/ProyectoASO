@@ -10,7 +10,7 @@ const Edit = () => {
     <section className="flex-col pt-28 px-10 h-screen text-customBlack">
       <HeaderLine text="Share print$" />
       <div className="flex flex-col items-center justify-center mt-20">
-        <div className="border-2 border-black overflow-hidden w-1/2 h-1/2">
+        <div className="border-[1px] border-black overflow-hidden w-1/2 h-1/2">
           <div className="flex bg-black text-white">
             <div className="w-1/2 p-2">Options</div>
             <div className="w-1/2 p-2">Values</div>
@@ -43,8 +43,9 @@ const Edit = () => {
           </div>
         </div>
         <div className="flex space-x-4 mt-4">
-          <Button text={ "Edit" } image={edit} />
+          
           <Button text={ "Add" } image={add} />
+          <Button text={ "Edit" } image={edit} />
           <Button text={ "Delete" } image={remove} />
         </div>
       </div>

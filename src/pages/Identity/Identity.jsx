@@ -10,7 +10,7 @@ export default function Identity() {
   };
 
   return (
-    <section className="flex-col px-10 mt-32 ml-18">
+    <section className="flex-col px-10 mt-28 ml-18">
       <HeaderLine text="Base Settings" />
       <div className="ml-6 mt-6">
         <div>

@@ -14,6 +14,9 @@ export default {
       fontFamily: {
         secular: ['Secular One'],
         roboto: ['Roboto']
+      },
+      backgroundImage: {
+        customServer: "url('./src/pages/Login/assets/servers.jpg')",
       }
     },
   },

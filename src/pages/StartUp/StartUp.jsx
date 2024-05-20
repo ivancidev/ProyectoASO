@@ -5,7 +5,7 @@ import HeaderLine from "../../components/SectionHeaderline/HeaderLine.jsx";
 export default function StartUp() {
   return (
     <>
-      <section className="space-y-4 mt-14 p-14 justify-start items-start">
+      <section className="space-y-4 mt-14 py-14 px-10 justify-start items-start">
         <HeaderLine text="Service Configuration" />
         <div>
           Current status:

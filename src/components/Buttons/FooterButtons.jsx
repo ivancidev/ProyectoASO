@@ -7,7 +7,7 @@ const FooterButtons = () => {
         ?
       </button>
       <div className="flex items-center justify-between w-64">
-        <button className="hover:border-curtomButton bg-white w-28 h-10 p-1 text-customHover rounded-[100px] flex items-center justify-center border-2 border-[#787A7D]">
+        <button className="hover:border-curtomButton w-28 h-10 p-1 text-customHover rounded-[100px] flex items-center justify-center border-[1px] border-customBlack">
           <p>Cancel</p>
         </button>
         <button className="hover:bg-curtomButton bg-customHover w-28 h-10 p-1 text-white rounded-[100px] flex items-center justify-center">

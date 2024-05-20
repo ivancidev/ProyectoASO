@@ -6,33 +6,38 @@ import Shares from "./pages/Shares/Shares.jsx";
 import Identity from "./pages/Identity/Identity.jsx";
 import Add from "./pages/Add/Add.jsx"
 import Edit from "./pages/Edit/Edit.jsx";
+import Login from "./pages/Login/Login.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
+    element: <Login />,
+  },
+  {
+    path: "/Navbar",
     element: <Navbar />,
     children: [
       {
-        path: "/Start-Up",
+        path: "Start-Up",
         element: <StartUp />,
       },
       {
-        path: "/Shares",
+        path: "Shares",
         element: <Shares />,
       },
       {
-        path: "/Shares/Edit",
+        path: "Shares/Edit",
         element: <Edit />,
       },
       {
-        path: "/Identity",
-        element: <Identity />
+        path: "Identity",
+        element: <Identity />,
       },
       {
-        path: "/Shares/Add",
-        element: <Add/>
-      }
-    ]
+        path: "Shares/Add",
+        element: <Add />,
+      },
+    ],
   },
 ]);
 

@@ -44,14 +44,14 @@ export default function Shares() {
           </button>
           <div className="flex items-center justify-evenly w-96">
             <Link
-              to={"/Shares/Add"}
+              to={"/Navbar/Shares/Add"}
               className="bg-customHover w-28 h-10 p-1 text-white rounded-[100px] flex items-center justify-center"
             >
               <img src={add} alt="Agregar" className="pr-3" />
               <p>Add</p>
             </Link>
             <Link
-              to={"/Shares/Edit"}
+              to={"/Navbar/Shares/Edit"}
               className="bg-customHover w-28 h-10 p-1 text-white rounded-[100px] flex items-center justify-center"
             >
               <img src={edit} alt="Editar" className="pr-3" />
