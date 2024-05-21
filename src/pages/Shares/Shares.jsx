@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 import HeaderLine from "../../components/SectionHeaderline/HeaderLine.jsx";
 import DeleteConfirmation from "../../modals/DeleteConfirm.jsx";
 import Table from "../../components/Table/Table.jsx";
+import FooterButtons from "../../components/Buttons/FooterButtons.jsx";
 
 export default function Shares() {
   const [contador, setContador] = useState(0);
@@ -98,6 +99,7 @@ export default function Shares() {
             </div>
           </div>
         </div>
+        <FooterButtons/>
       </section>
   );
 }

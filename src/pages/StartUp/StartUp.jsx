@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import RadioButton from "../../components/Buttons/RadioButton.jsx";
 import HeaderLine from "../../components/SectionHeaderline/HeaderLine.jsx";
+import FooterButtons from "../../components/Buttons/FooterButtons.jsx";
 
 export default function StartUp() {
   return (
@@ -29,6 +30,7 @@ export default function StartUp() {
           </div>
         </section>
       </section>
+      <FooterButtons/>
     </>
   );
 }

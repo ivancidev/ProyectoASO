@@ -48,7 +48,6 @@ const Navbar = () => {
         <Outlet />
       </div>
       {showStartUp && <StartUp />}
-      <FooterButton/>
     </>
   );
 };

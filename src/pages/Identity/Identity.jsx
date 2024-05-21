@@ -1,6 +1,7 @@
 import { useState } from "react";
 import RadioButton from "../../components/Buttons/RadioButton.jsx";
 import HeaderLine from "../../components/SectionHeaderline/HeaderLine.jsx";
+import FooterButtons from "../../components/Buttons/FooterButtons.jsx";
 
 export default function Identity() {
   const [inputValue, setInputValue] = useState("WORKGROUP");
@@ -31,6 +32,7 @@ export default function Identity() {
           </div>
         </div>
       </div>
+      <FooterButtons/>
     </section>
   );
 }
