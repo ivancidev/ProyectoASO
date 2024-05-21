@@ -3,8 +3,8 @@ const DeleteConfirmation = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-slate-400 bg-opacity-[0.4]">
-      <div className="bg-white pt-12 pb-8 pr-8 pl-8 rounded-lg shadow-lg relative w-96">
+    <div className="fixed inset-0 flex items-center justify-center bg-slate-400 bg-opacity-[0.4] z-50">
+      <div className="bg-white pt-12 pb-8 pr-8 pl-8  border-customBlack border-[1px] rounded-lg shadow-lg relative w-96">
         <button
           onClick={onClose}
           className="absolute top-3 right-3 text-gray-500"
