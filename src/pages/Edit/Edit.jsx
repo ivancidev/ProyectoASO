@@ -3,6 +3,7 @@ import HeaderLine from "../../components/SectionHeaderline/HeaderLine";
 import edit from "../../assets/edit.svg";
 import add from "../../assets/add.svg";
 import remove from "../../assets/delete.svg";
+import FooterButtons from "../../components/Buttons/FooterButtons";
 
 
 const Edit = () => {
@@ -48,6 +49,7 @@ const Edit = () => {
           <Button text={ "Delete" } image={remove} />
         </div>
       </div>
+      <FooterButtons/>
     </section>
   );
 };

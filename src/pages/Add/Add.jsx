@@ -3,6 +3,7 @@ import search from "../../assets/search.svg";
 import RadioButton from "../../components/Buttons/RadioButton.jsx";
 import TextInput from "../../components/TextInput/TextInput.jsx";
 import HeaderLine from "../../components/SectionHeaderline/HeaderLine.jsx";
+import FooterButtons from "../../components/Buttons/FooterButtons.jsx";
 export default function StartUp() {
 
   return (
@@ -28,6 +29,7 @@ export default function StartUp() {
             </div>
         </section>
       </section>
+      <FooterButtons/>
     </>
   );
 }
