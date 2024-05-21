@@ -2,6 +2,7 @@ import { useState } from "react";
 import RadioButton from "../../components/Buttons/RadioButton.jsx";
 import HeaderLine from "../../components/SectionHeaderline/HeaderLine.jsx";
 import FooterButtons from "../../components/Buttons/FooterButtons.jsx";
+import { helTextIdentity } from "../../utils/helpText.js";
 
 export default function Identity() {
   const [inputValue, setInputValue] = useState("WORKGROUP");
@@ -32,7 +33,7 @@ export default function Identity() {
           </div>
         </div>
       </div>
-      <FooterButtons/>
+      <FooterButtons title={helTextIdentity.title} description={helTextIdentity.description}/>
     </section>
   );
 }
