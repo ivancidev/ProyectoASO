@@ -12,7 +12,7 @@ import DeleteConfirmation from "../../modals/DeleteConfirm.jsx";
 import Table from "../../components/Table/Table.jsx";
 import FooterButtons from "../../components/Buttons/FooterButtons.jsx";
 import React, { useState } from "react";
-import helpTextShares from "../../utils/helpText.js";
+import { helpTextShares } from "../../utils/helpText.js";
 export default function Shares() {
   const [contador, setContador] = useState(0);
   const [isModalOpen, setModalOpen] = useState(false);
