@@ -6,22 +6,36 @@ import edit from "../../assets/edit.svg";
 import remove from "../../assets/delete.svg";
 import minus from "./assets/minus.svg";
 import RadioButton from "../../components/Buttons/RadioButton.jsx";
-import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import HeaderLine from "../../components/SectionHeaderline/HeaderLine.jsx";
 import DeleteConfirmation from "../../modals/DeleteConfirm.jsx";
 import Table from "../../components/Table/Table.jsx";
 import FooterButtons from "../../components/Buttons/FooterButtons.jsx";
-
+import React, { useState } from "react";
+import Help from "../../modals/Help.jsx";
 export default function Shares() {
   const [contador, setContador] = useState(0);
   const [isModalOpen, setModalOpen] = useState(false);
-
+  const [isModalHelp, setModalHelp] = useState(false);
+  const [isHelp, setHelp] = useState(false);
+  
   return (
       <section className="flex-col pt-28 px-10 h-screen text-customBlack">
         <HeaderLine text="Available Shares" />
         {isModalOpen && (
           <DeleteConfirmation isOpen={isModalOpen} onClose={() => setModalOpen(false)} />
+        )}
+        {isHelp && (
+          <Help isOpen={isHelp} onClose={() => setHelp(false)} 
+          titulo="Share" 
+          text= "This is a list of already configured shares, whether they are enabled or disabled, and some basic information about them.
+
+          A share can be enabled or disabled. A disabled share is not accessible, but its configuration is still written into the configuration file. So the share can be later enabled again. 
+          Some of the shares are special. For example, the share Homes is a special system share for accessing home directories of users. The system shares can be hidden from the table by selecting Do Not Show System Shares in the Filter menu.
+          Use Add to add a new share, Edit to modify already existing share, and Delete to remove the information about a share.
+          Allow Users to Share Their Directories enables members of the group in Permitted Group to share directories they own with other users. For example, users for a local scope or DOMAIN\Users for a domain scope. The user also must make sure that the file system permissions allow access.
+          With Maximum Number of Shares, limit the total amount of shares that may be created.
+          To permit access to user shares without authentication, enable Allow Guest Access."/>
         )}
         <div className="flex justify-end">
           <div className="flex items-center justify-between w-[360px] h-11 border rounded-[28px] px-4 border-[#787A7D]">
@@ -99,7 +113,7 @@ export default function Shares() {
             </div>
           </div>
         </div>
-        <FooterButtons/>
+        <FooterButtons isOpen={isHelp} onClose={setHelp}/>
       </section>
   );
 }

@@ -1,9 +1,11 @@
 import React from "react";
 
-const FooterButtons = () => {
+const FooterButtons = ({ isOpen, setHelp}) => {
+ 
+
   return (
-    <div className="flex items-center justify-between font-roboto text-sm fixed bottom-0 left-0 right-0 p-6 z-50">
-      <button className="hover:bg-curtomButton bg-customHover w-10 h-10 p-1 text-white rounded-[100px]">
+    <div className="flex items-center justify-between font-roboto text-sm bottom-0 left-0 right-0 p-6 fixed z-50">
+      <button onClick={() => setHelp(true)} className="hover:bg-curtomButton bg-customHover w-10 h-10 p-1 text-white rounded-[100px]">
         ?
       </button>
       <div className="flex items-center justify-between w-64">
