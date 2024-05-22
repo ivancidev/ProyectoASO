@@ -11,17 +11,13 @@ const helpTextShares = {
 };
 
 const helpTextStartUp = {
-  title: `Service configuration`,
+  title: `Service Configuration`,
   description: `Current status
     Displays the current status of the service.
     After writing configuration
     Allow to change the service status immediately after accepting the changes. Available options depend on the current state. The Keep current state special action leaves the service state untouched.
     After reboot
-    Let choose if service should be started automatically on boot. Some services could be configured on demand, which means that the associated socket will be running and start the service if needed. 
-    Firewall Settings
-    To open the firewall to allow access to the service from remote computers, set Open Port in Firewall.
-    To select interfaces on which to open the port, click Firewall Details.
-    This option is available only if the firewall is enabled.`,
+    Let choose if service should be started automatically on boot. Some services could be configured on demand, which means that the associated socket will be running and start the service if needed.`,
 };
 
 const helTextIdentity = {
@@ -31,6 +27,25 @@ const helTextIdentity = {
     If you want to use Microsoft Windows Internet Name Service (WINS) for name resolution, check Use WINS for Hostname Resolution. 
     Optionally, set a Server NetBIOS Name. The NetBIOS name is the name the server uses in the SMB network.
     Advanced Settings provides access to detailed configuration, user authentication sources, and expert global settings.`,
+};
+
+const helpTextAdd ={
+  title: `Add a New Share`,
+  description: `Here, enter the basic information about a share to add.
+  Share Name is used for accessing the share from clients. Share Description describes the purpose of the share.
+  There are two types of shares. A Printer share is presented as a printer to clients. A Directory share is presented as a network disk. Share Path must be entered for a directory share.
+  If Read-Only is checked, users of a service may not create or modify files in the service's directory.
+  Inherit ACLS can be used to ensure that if default ACLs exist on parent directories, they are always honored when creating a subdirectory.
+  With Expose Snapshots selected, Samba exposes snapshots created by Snapper for access and manipulation by CIFS/SMB clients. This option is only available if Samba offers Snapper support, and the Share Path corresponds to a Btrfs backed Snapper configuration subvolume.
+  Relevant permissions must also be granted, see Samba's vfs_snapper(8) man page for further details.
+  Utilize Btrfs Features instructs Samba to take advantage of features specific to the Btrfs filesystem. This option is only available if Samba offers Btrfs support, and the Share Path is a Btrfs subvolume. See Samba's vfs_btrfs(8) man page for further details.`,
+};
+
+const helpTextEdit = {
+  title: `Edit a Share`,
+  description: `Here, fine-tune the options of a share.
+  Use Add to add a new configuration option, Edit to modify an existing option, and Delete to delete an option. `,
+
 }
 
-export { helpTextShares, helpTextStartUp, helTextIdentity };
+export { helpTextShares, helpTextStartUp, helTextIdentity, helpTextAdd, helpTextEdit };

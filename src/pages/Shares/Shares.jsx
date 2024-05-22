@@ -13,6 +13,7 @@ import Table from "../../components/Table/Table.jsx";
 import FooterButtons from "../../components/Buttons/FooterButtons.jsx";
 import React, { useState } from "react";
 import { helpTextShares } from "../../utils/helpText.js";
+import Button from "../../components/Buttons/Button.jsx";
 export default function Shares() {
   const [contador, setContador] = useState(0);
   const [isModalOpen, setModalOpen] = useState(false);
@@ -47,27 +48,10 @@ export default function Shares() {
           Rename
         </button>
         <div className="flex items-center justify-evenly w-96">
-          <Link
-            to={"/Navbar/Shares/Add"}
-            className="bg-customHover w-28 h-10 p-1 text-white rounded-[100px] flex items-center justify-center"
-          >
-            <img src={add} alt="Agregar" className="pr-3" />
-            <p>Add</p>
-          </Link>
-          <Link
-            to={"/Navbar/Shares/Edit"}
-            className="bg-customHover w-28 h-10 p-1 text-white rounded-[100px] flex items-center justify-center"
-          >
-            <img src={edit} alt="Editar" className="pr-3" />
-            <p>Edit</p>
-          </Link>
-          <button
-            onClick={() => setModalOpen(true)}
-            className="bg-customHover w-28 h-10 p-1 text-white rounded-[100px] flex items-center justify-center"
-          >
-            <img src={remove} alt="Eliminar" className="pr-2" />
-            <p>Delete</p>
-          </button>
+          
+          <Button text={ "Add" } image={add} route={"/Navbar/Shares/Add"} />
+          <Button text={ "Edit" } image={edit} route={"/Navbar/Shares/Edit"} />
+          <Button  onClick={() => setModalOpen(true)} text={ "Delete" } image={remove} />
         </div>
       </div>
       <div className="flex justify-between items-center w-full pt-6 pb-3">

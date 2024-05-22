@@ -21,7 +21,7 @@ export default function Identity() {
             onChange={handleOnChange}
             type="text"
             value={inputValue}
-            className="border-2 border-zinc-500 rounded-lg p-1"
+            className="border-[1px] border-zinc-500 rounded-lg p-1"
           />
         </div>
         <div className="flex items-center">

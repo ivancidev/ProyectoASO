@@ -4,7 +4,7 @@ const Help = ({ isHelp, onCloseHelp, titulo, text }) => {
 
   return (
     <section className="fixed inset-0 flex items-center justify-center bg-slate-400 bg-opacity-[0.4] z-50 ">
-      <div className=" bg-white border-customBlack border-[1px] rounded-lg pt-12 pb-8 pr-8 pl-8 shadow-lg relative w-[600px] flex flex-col items-center">
+      <div className=" bg-white border-customBlack border-[1px] rounded-lg pt-12 pb-8 pr-8 pl-8 shadow-lg relative w-[640px] flex flex-col items-center">
         <button onClick={onCloseHelp} className="absolute top-3 right-3 text-gray-500">
           <img src={close} alt="close" />
         </button>
