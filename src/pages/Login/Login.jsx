@@ -1,7 +1,6 @@
 import iconSamba from "../../assets/iconSamba.svg";
-import { Link } from "react-router-dom";
 
-export default function Login() {
+const Login = ({ onLogin }) => {
   return (
     <section className="flex w-screen h-screen bg-customServer items-center">
       <div className="w-1/2 flex justify-center">
@@ -38,14 +37,16 @@ export default function Login() {
               className="w-64 h-9 mt-3 border-b-[1px] border-r-[1px] border-customBlack rounded-lg focus:outline-none p-1 font-roboto text-sm bg-white"
             />
           </div>
-          <Link
-            to={"/Navbar/Start-Up"}
+          <button
+            onClick={onLogin}
             className="bg-customBlack font-roboto mt-14 w-28 h-10 p-1 text-white rounded-[100px] flex items-center justify-center"
           >
             <p>Send</p>
-          </Link>
+          </button>
         </div>
       </div>
     </section>
   );
 }
+
+export default Login;

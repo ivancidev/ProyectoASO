@@ -10,12 +10,11 @@ import { Link } from "react-router-dom";
 import HeaderLine from "../../components/SectionHeaderline/HeaderLine.jsx";
 import DeleteConfirmation from "../../modals/DeleteConfirm.jsx";
 import Table from "../../components/Table/Table.jsx";
-import FooterButtons from "../../components/Buttons/FooterButtons.jsx";
 import React, { useState } from "react";
-import { helpTextShares } from "../../utils/helpText.js";
 export default function Shares() {
   const [contador, setContador] = useState(0);
   const [isModalOpen, setModalOpen] = useState(false);
+  const [isModalRename, setModalRename] = useState(false);
 
   return (
     <section className="flex-col pt-28 px-10 h-screen text-customBlack">
@@ -41,21 +40,27 @@ export default function Shares() {
           </button>
         </div>
       </div>
-      <Table />
+      <Table
+        isModalRename={isModalRename}
+        onCloseRename={() => setModalRename(false)}
+      />
       <div className="flex items-center justify-between font-roboto text-sm mt-6">
-        <button className="bg-customHover w-28 h-10 p-1 text-white rounded-[100px]">
+        <button
+          onClick={() => setModalRename(true)}
+          className="bg-customHover w-28 h-10 p-1 text-white rounded-[100px]"
+        >
           Rename
         </button>
         <div className="flex items-center justify-evenly w-96">
           <Link
-            to={"/Navbar/Shares/Add"}
+            to={"/Shares/Add"}
             className="bg-customHover w-28 h-10 p-1 text-white rounded-[100px] flex items-center justify-center"
           >
             <img src={add} alt="Agregar" className="pr-3" />
             <p>Add</p>
           </Link>
           <Link
-            to={"/Navbar/Shares/Edit"}
+            to={"/Shares/Edit"}
             className="bg-customHover w-28 h-10 p-1 text-white rounded-[100px] flex items-center justify-center"
           >
             <img src={edit} alt="Editar" className="pr-3" />
@@ -105,7 +110,6 @@ export default function Shares() {
           </div>
         </div>
       </div>
-      <FooterButtons title={helpTextShares.title} description={helpTextShares.description} />
     </section>
   );
 }
