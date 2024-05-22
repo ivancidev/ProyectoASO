@@ -1,6 +1,6 @@
 const URL_BASE = import.meta.env.VITE_URL_BACKEND;
 
-export const fetchShares = async () => {
+const fetchShares = async () => {
   try {
     const response = await fetch(`${URL_BASE}/shares`);
 
@@ -15,4 +15,29 @@ export const fetchShares = async () => {
     throw error;
   }
 };
+
+const fetchRename = async (oldName, newName) => {
+  try {
+    const response = await fetch(`${URL_BASE}/renameShare`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ oldName: oldName, newName: newName })
+    });
+    const data = await response.json();
+
+    if (response.ok) {
+      console.log(data.message);
+    } else {
+      console.log(data.message);
+    }
+    
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
+
+export { fetchShares, fetchRename };
+
 
