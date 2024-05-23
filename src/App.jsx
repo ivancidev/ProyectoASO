@@ -5,7 +5,6 @@ import StartUp from "./pages/StartUp/StartUp.jsx";
 import Shares from "./pages/Shares/Shares.jsx";
 import Identity from "./pages/Identity/Identity.jsx";
 import Add from "./pages/Add/Add.jsx";
-import Edit from "./pages/Edit/Edit.jsx";
 import Login from "./pages/Login/Login.jsx";
 
 const router = createBrowserRouter([
@@ -24,10 +23,6 @@ const router = createBrowserRouter([
       {
         path: "Shares",
         element: <Shares />,
-      },
-      {
-        path: "Shares/Edit",
-        element: <Edit />,
       },
       {
         path: "Identity",
