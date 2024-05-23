@@ -16,6 +16,7 @@ export default function Shares() {
   const [contador, setContador] = useState(0);
   const [isModalOpen, setModalOpen] = useState(false);
   const [isModalRename, setModalRename] = useState(false);
+  const [isModalEdit, setIsModalEdit] = useState(false);
 
   return (
     <section className="flex-col pt-28 px-10 h-screen text-customBlack">
@@ -44,6 +45,8 @@ export default function Shares() {
       <Table
         isModalRename={isModalRename}
         onCloseRename={() => setModalRename(false)}
+        isModalEdit={isModalEdit}
+        setIsModalEdit = {setIsModalEdit}
       />
       <div className="flex items-center justify-between font-roboto text-sm mt-6">
         <button
@@ -54,7 +57,7 @@ export default function Shares() {
         </button>
         <div className="flex items-center justify-evenly w-96">
           <Button text={"Add"} image={add} route={"/Shares/Add"} />
-          <Button text={"Edit"} image={edit} route={"/Shares/Edit"} />
+          <Button text={"Edit"} image={edit} onClick={() => setIsModalEdit(true)} />
           <Button
             onClick={() => setModalOpen(true)}
             text={"Delete"}
