@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import close from "../assets/close.svg";
 
-const Rename = ({ isOpen, onClose, name, updateShareName }) => {
+const Rename = ({ isOpen, onClose, name, updateShareName, text }) => {
   const [newShareName, setNewShareName] = useState(name);
 
   useEffect(() => {
@@ -26,7 +26,7 @@ const Rename = ({ isOpen, onClose, name, updateShareName }) => {
         >
           <img src={close} alt="close" />
         </button>
-        <h2 className="font-bold text-2xl text-center mb-2">Rename Share</h2>
+        <h2 className="font-bold text-2xl text-center mb-2">{text}</h2>
         <p>New Share Name:</p>
         <input
           type="text"
