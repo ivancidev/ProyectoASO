@@ -45,7 +45,7 @@ export default function Add() {
             <div className="flex space-x-2">
               <TextInput label="Share Path"/>
               <button className="bg-customHover items-center justify-center flex rounded w-8 h-8">
-                <img src={searchWhite} alt="Filtro" className="w-6 h-6 opacity-none"/>
+                <img src={search} alt="Filtro" className="w-6 h-6 opacity-none"/>
               </button>
             </div>
             <div>
