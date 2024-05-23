@@ -6,11 +6,12 @@ import edit from "../../assets/edit.svg";
 import remove from "../../assets/delete.svg";
 import minus from "./assets/minus.svg";
 import RadioButton from "../../components/Buttons/RadioButton.jsx";
-import { Link } from "react-router-dom";
 import HeaderLine from "../../components/SectionHeaderline/HeaderLine.jsx";
 import DeleteConfirmation from "../../modals/DeleteConfirm.jsx";
 import Table from "../../components/Table/Table.jsx";
 import React, { useState } from "react";
+import Button from "../../components/Buttons/Button.jsx";
+
 export default function Shares() {
   const [contador, setContador] = useState(0);
   const [isModalOpen, setModalOpen] = useState(false);
@@ -52,27 +53,13 @@ export default function Shares() {
           Rename
         </button>
         <div className="flex items-center justify-evenly w-96">
-          <Link
-            to={"/Shares/Add"}
-            className="bg-customHover w-28 h-10 p-1 text-white rounded-[100px] flex items-center justify-center"
-          >
-            <img src={add} alt="Agregar" className="pr-3" />
-            <p>Add</p>
-          </Link>
-          <Link
-            to={"/Shares/Edit"}
-            className="bg-customHover w-28 h-10 p-1 text-white rounded-[100px] flex items-center justify-center"
-          >
-            <img src={edit} alt="Editar" className="pr-3" />
-            <p>Edit</p>
-          </Link>
-          <button
+          <Button text={"Add"} image={add} route={"/Shares/Add"} />
+          <Button text={"Edit"} image={edit} route={"/Shares/Edit"} />
+          <Button
             onClick={() => setModalOpen(true)}
-            className="bg-customHover w-28 h-10 p-1 text-white rounded-[100px] flex items-center justify-center"
-          >
-            <img src={remove} alt="Eliminar" className="pr-2" />
-            <p>Delete</p>
-          </button>
+            text={"Delete"}
+            image={remove}
+          />
         </div>
       </div>
       <div className="flex justify-between items-center w-full pt-6 pb-3">

@@ -1,5 +1,6 @@
 import close from "../assets/close.svg";
-const DeleteConfirmation = ({ isOpen, onClose }) => {
+
+const EditCheck = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
@@ -11,15 +12,18 @@ const DeleteConfirmation = ({ isOpen, onClose }) => {
         >
           <img src={close} alt="close" />
         </button>
-        <p className="font-roboto text-base">If you delete share print$ all its settings will be lost. <br />
-          Really delete it?
-        </p>
+        <div className="flex flex-row">
+            <p className="font-secular text-base">Current Option:</p>
+            <p className="font-roboto text-base ml-2">inherit acls</p>
+        </div>
+        <p className="mt-4">inherit acls</p>
+        
         <div className="flex items-center justify-center space-x-6 mt-8">
             <button className="w-20 py-2 bg-customHover rounded-[20px] text-white">
-               Yes 
+               Ok 
             </button>
             <button onClick={onClose}  className="w-20 py-2 border-black border-[1px] text-customHover rounded-[20px]">
-                No
+                Cancel
             </button>
         </div>
       </div>
@@ -27,4 +31,4 @@ const DeleteConfirmation = ({ isOpen, onClose }) => {
   );
 };
 
-export default DeleteConfirmation;
+export default EditCheck;

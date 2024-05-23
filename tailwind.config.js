@@ -21,7 +21,7 @@ export default {
       backgroundColor: {
         'green-70': 'rgba(125, 223, 7, 0.7)',
       },
-
+    
     },
   },
   plugins: [],

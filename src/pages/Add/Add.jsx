@@ -1,9 +1,11 @@
 import { Outlet } from "react-router-dom";
-import search from "../../assets/search.svg";
+import searchWhite from "../../assets/searchWhite.svg";
 import RadioButton from "../../components/Buttons/RadioButton.jsx";
 import TextInput from "../../components/TextInput/TextInput.jsx";
 import HeaderLine from "../../components/SectionHeaderline/HeaderLine.jsx";
 import FooterButtons from "../../components/Buttons/FooterButtons.jsx";
+import React, { useState } from "react";
+import { helpTextAdd } from "../../utils/helpText.js";
 export default function StartUp() {
 
   return (
@@ -24,12 +26,12 @@ export default function StartUp() {
             <div className="flex space-x-2">
               <TextInput label="Share Path"/>
               <button className="bg-customHover items-center justify-center flex rounded w-8 h-8">
-                <img src={search} alt="Filtro" className="w-6 h-6 opacity-none"/>
+                <img src={searchWhite} alt="Filtro" className="w-6 h-6 opacity-none"/>
               </button>
             </div>
         </section>
       </section>
-      <FooterButtons/>
+      <FooterButtons title={helpTextAdd.title} description={helpTextAdd.description} />
     </>
   );
 }

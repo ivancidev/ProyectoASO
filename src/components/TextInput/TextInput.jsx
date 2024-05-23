@@ -14,7 +14,7 @@ const TextInput = ({ label }) => {
         type="text"
         value={inputValue}
         onChange={handleChange}
-        className="border-2 border-zinc-500 rounded-lg p-1 focus:outline-none"
+        className="border-[1px] border-zinc-500 rounded-lg p-1 focus:outline-none"
       />
     </div>
   );

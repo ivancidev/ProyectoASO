@@ -44,7 +44,7 @@ const Table = ({ isModalRename, onCloseRename }) => {
       )}
       <table className="w-full font-roboto mt-4">
         <thead className="h-9">
-          <tr className="bg-customBlack text-xs text-white border border-customBlack">
+          <tr className="bg-customBlack text-sm text-white border border-customBlack">
             <th className="text-left pl-1">Status</th>
             <th className="text-left">Read-Only</th>
             <th className="text-left pl-3">Name</th>
@@ -54,7 +54,7 @@ const Table = ({ isModalRename, onCloseRename }) => {
           </tr>
         </thead>
       </table>
-      <div className="border-2 border-customBlack max-h-32 overflow-y-auto">
+      <div className="border-[1px] border-customBlack max-h-32 overflow-y-auto">
         <table className="w-full my-2 font-roboto border-collapse">
           <tbody>
             {shares !== null
