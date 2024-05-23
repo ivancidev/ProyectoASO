@@ -15,6 +15,19 @@ const fetchShares = async () => {
     throw error;
   }
 };
+export const fetchStatus = async () => {
+  try{
+    const response = await fetch(`${URL_BASE}/start`);
+    if(!response.ok){
+      throw new Error("Not response network");
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error nose donde pero error:", error);
+    throw error;
+  }
+};
 
 const fetchRename = async (oldName, newName) => {
   try {
