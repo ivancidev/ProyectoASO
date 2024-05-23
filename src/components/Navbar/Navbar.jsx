@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import iconSamba from "../../assets/iconSamba.svg";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import StartUp from "../../pages/StartUp/StartUp";
-import FooterButton from "../Buttons/FooterButtons";
 
 const Navbar = () => {
   const [showStartUp, setShowStartUp] = useState(true);
@@ -27,17 +26,17 @@ const Navbar = () => {
           <span className="cursor-pointer">Samba Server</span>
         </div>
         <ul className="flex items-center space-x-32 mr-28">
-          <li onClick={() => handleSharesClick("/Start-Up")}>
+          <li onClick={() => handleSharesClick("Start-Up")}>
             <Link to={"Start-Up"} className={`hover:text-customHover ${activeLink === "/Start-Up" || activeLink === "/" ? "text-customHover": ""}`}>
               Start-Up
             </Link>
           </li>
-          <li onClick={() => handleSharesClick("/Shares")}>
+          <li onClick={() => handleSharesClick("Shares")}>
             <Link to={"Shares"} className={`hover:text-customHover ${activeLink === "/Shares" ? "text-customHover": ""}`}>
               Shares
             </Link>
           </li>
-          <li onClick={() => handleSharesClick("/Identity")}>
+          <li onClick={() => handleSharesClick("Identity")}>
             <Link to={"Identity"} className={`hover:text-customHover ${activeLink === "/Identity" ? "text-customHover": ""}`}>
               Identity
             </Link>
