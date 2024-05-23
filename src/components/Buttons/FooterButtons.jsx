@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Help from "../../modals/Help";
 import Succesfully from "../../modals/Succesfully";
 import { fetchRename } from "../../utils/api";
