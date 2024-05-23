@@ -1,6 +1,18 @@
+import React, { useState } from "react";
 import close from "../assets/close.svg";
 
-const EditCheck = ({ isOpen, onClose }) => {
+const EditCheck = ({ isOpen, onClose, name, updateShareName, option }) => {
+  const [newValue, setNewValue] = useState(name);
+
+  const handleChange = (e) => {
+    setNewValue(e.target.value);
+  };
+
+  const handleUpdate = () => {
+    updateShareName(newValue);
+    onClose();
+  };
+
   if (!isOpen) return null;
 
   return (
@@ -12,19 +24,30 @@ const EditCheck = ({ isOpen, onClose }) => {
         >
           <img src={close} alt="close" />
         </button>
-        <div className="flex flex-row">
-            <p className="font-secular text-base">Current Option:</p>
-            <p className="font-roboto text-base ml-2">inherit acls</p>
+        <div className="flex flex-col">
+          <p className="font-secular text-base">Current Option: <b>{option}</b> </p>
+          <p className="font-roboto text-base ml-2">{option}</p>
+          <input
+            type="text"
+            value={newValue}
+            onChange={handleChange}
+            className="border-2 border-black rounded-lg p-2 mt-4 w-full"
+          />
         </div>
-        <p className="mt-4">inherit acls</p>
         
         <div className="flex items-center justify-center space-x-6 mt-8">
-            <button className="w-20 py-2 bg-customHover rounded-[20px] text-white">
-               Ok 
-            </button>
-            <button onClick={onClose}  className="w-20 py-2 border-black border-[1px] text-customHover rounded-[20px]">
-                Cancel
-            </button>
+          <button
+            onClick={handleUpdate}
+            className="w-20 py-2 bg-customHover rounded-[20px] text-white"
+          >
+            Ok
+          </button>
+          <button
+            onClick={onClose}
+            className="w-20 py-2 border-black border-[1px] text-customHover rounded-[20px]"
+          >
+            Cancel
+          </button>
         </div>
       </div>
     </div>
