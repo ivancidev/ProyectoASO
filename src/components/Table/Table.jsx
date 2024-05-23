@@ -3,8 +3,9 @@ import { fetchShares } from "../../utils/api";
 import Rename from "../../modals/Rename";
 import FooterButtons from "../Buttons/FooterButtons";
 import { helpTextShares } from "../../utils/helpText";
+import Edit from "../../pages/Edit/Edit";
 
-const Table = ({ isModalRename, onCloseRename }) => {
+const Table = ({ isModalRename, onCloseRename, isModalEdit }) => {
   const [shares, setShares] = useState(null);
   const [selectedShareIndex, setSelectedShareIndex] = useState(null);
   const [oldName, setOldName] = useState("");
@@ -38,10 +39,15 @@ const Table = ({ isModalRename, onCloseRename }) => {
           name={shares[selectedShareIndex].name}
           onClose={onCloseRename}
           updateShareName={updateShareName}
+          text={"Rename Share"}
         />
       ) : (
         ""
       )}
+      {isModalEdit && selectedShareIndex !== null ? (<Edit
+        resource={shares ? shares[selectedShareIndex] : {}}
+      />
+      ): ("")}
       <table className="w-full font-roboto mt-4">
         <thead className="h-9">
           <tr className="bg-customBlack text-sm text-white border border-customBlack">
