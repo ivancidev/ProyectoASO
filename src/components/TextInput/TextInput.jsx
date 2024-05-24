@@ -8,7 +8,7 @@ const TextInput = ({ label }) => {
   };
 
   return (
-    <div className="space-x-6">
+    <div className="space-x-6 ml-6">
       <label>{label}</label>
       <input
         type="text"

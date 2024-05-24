@@ -21,7 +21,7 @@ export default function StartUp() {
   
   return (
     <>
-      <section className="space-y-4 mt-14 py-14 px-10">
+      <section className="space-y-4 mt-14 py-14 px-10 bg-white h-screen">
         <HeaderLine text="Service Configuration" />
         <div>Current status: {status}</div>
         <div className="flex">

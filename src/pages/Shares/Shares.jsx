@@ -19,7 +19,8 @@ export default function Shares() {
   const [isModalEdit, setIsModalEdit] = useState(false);
 
   return (
-    <section className="flex-col pt-28 px-10 h-screen text-customBlack">
+    <>
+    <section className="flex-col mt-14 py-14 px-10 bg-white h-screen text-customBlack">
       <HeaderLine text="Available Shares" />
       {isModalOpen && (
         <DeleteConfirmation
@@ -49,12 +50,26 @@ export default function Shares() {
         setIsModalEdit = {setIsModalEdit}
       />
       <div className="flex items-center justify-between font-roboto text-sm mt-6">
-        <button
-          onClick={() => setModalRename(true)}
-          className="bg-customHover w-28 h-10 p-1 text-white rounded-[100px]"
-        >
-          Rename
-        </button>
+        <div className="flex  items-center justify-evenly w-96">
+          <button
+            onClick={() => setModalRename(true)}
+            className="bg-customHover w-28 h-10 p-1 text-white rounded-[100px]"
+          >
+            Rename
+          </button>
+          <button
+            onClick={() => setModalRename(true)}
+            className="bg-customHover w-28 h-10 p-1 text-white rounded-[100px]"
+          >
+            Guest Access
+          </button>
+          <button
+            onClick={() => setModalRename(true)}
+            className="bg-customHover w-28 h-10 p-1 text-white rounded-[100px]"
+          >
+            Toggle Status
+          </button>
+          </div>
         <div className="flex items-center justify-evenly w-96">
           <Button text={"Add"} image={add} route={"/Shares/Add"} />
           <Button text={"Edit"} image={edit} onClick={() => setIsModalEdit(true)} />
@@ -101,5 +116,6 @@ export default function Shares() {
         </div>
       </div>
     </section>
+    </>
   );
 }

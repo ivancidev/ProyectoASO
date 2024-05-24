@@ -41,6 +41,11 @@ const Navbar = () => {
               Identity
             </Link>
           </li>
+          <li onClick={() => handleSharesClick("Users")}>
+            <Link to={"Users"} className={`hover:text-customHover ${activeLink === "/Users"? "text-customHover": ""}`}>
+              Users
+            </Link>
+          </li>
         </ul>
       </nav>
       <div>

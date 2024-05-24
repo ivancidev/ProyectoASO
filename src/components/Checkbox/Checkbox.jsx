@@ -9,8 +9,8 @@ const Checkbox = ({ label, name, checked = false, onChange }) => {
   };
 
   return (
-    <div className="checkbox">
-      <input
+    <div className="space-x-3 flex">
+      <input className='w-4'
         type="checkbox"
         id={name}
         name={name}
