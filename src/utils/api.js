@@ -28,7 +28,6 @@ const fetchStatus = async () => {
     throw error;
   }
 };
-
 const fetchRename = async (oldName, newName) => {
   try {
     const response = await fetch(`${URL_BASE}/renameShare`, {
@@ -72,6 +71,41 @@ const fetchLogin = async (user) => {
   }
 };
 
+const fetchEnable = async () => {
+  try{
+    const response = await fetch(`${URL_BASE}/enable`);
+    if(!response.ok){
+      throw new Error("Not response network");
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error nose donde pero error:", error);
+    throw error;
+  }
+};
+
+const fetchUpdateStart = async (actual, onReboot) => {
+  try {
+    const response = await fetch(`${URL_BASE}/update_samba`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ actual: actual, onReboot: onReboot })
+    });
+    const data = await response.json();
+    if (response.ok) {
+      console.log(data.message);
+    } else {
+      console.log(data.message);
+    }
+  } catch (error) {
+    console.error('Error:', error);
+  }
+};
+
+
 const fectchEdit = (share_name, jsonData) => {
   fetch(`${URL_BASE}/shares/${share_name}`, {
     method: "PUT",
@@ -92,4 +126,6 @@ const fectchEdit = (share_name, jsonData) => {
     });
 };
 
-export { fetchShares, fetchRename, fetchLogin, fetchStatus, fectchEdit };
+export { fetchShares, fetchRename, fetchLogin, fetchStatus, fectchEdit, fetchEnable, fetchUpdateStart  };
+
+

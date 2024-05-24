@@ -1,4 +1,4 @@
-const RadioButton = ({ id, name, label }) => {
+const RadioButton = ({ id, name, label, checked, onChange }) => {
   return (
     <div className="mt-1">
       <input
@@ -6,6 +6,8 @@ const RadioButton = ({ id, name, label }) => {
         name={name}
         id={id}
         className="mr-2 h-4 w-4 text-lg"
+        checked={checked}
+        onChange={onChange}
       />
       <label htmlFor={id}>{label}</label>
     </div>

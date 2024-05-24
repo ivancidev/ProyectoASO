@@ -29,6 +29,12 @@ const helTextIdentity = {
     Advanced Settings provides access to detailed configuration, user authentication sources, and expert global settings.`,
 };
 
+const helpTextUser = {
+  title: `Samba Users`,
+  description: `In this section, you can see a list of the users that have been added in Samba, this will be displayed within a table. 
+  Additionally, it provides the options to add a new user and delete an existing user, the changes will be shown in the table.`,
+};
+
 const helpTextAdd ={
   title: `Add a New Share`,
   description: `Here, enter the basic information about a share to add.
@@ -48,4 +54,4 @@ const helpTextEdit = {
 
 }
 
-export { helpTextShares, helpTextStartUp, helTextIdentity, helpTextAdd, helpTextEdit };
+export { helpTextShares, helpTextStartUp, helTextIdentity, helpTextAdd, helpTextEdit, helpTextUser };

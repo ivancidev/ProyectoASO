@@ -68,7 +68,7 @@ const Table = ({ isModalRename, onCloseRename, isModalEdit }) => {
                   <tr
                     key={index}
                     onClick={() => setSelectedShareIndex(index)}
-                    className={` text-[16px] text-custumBlack hover:bg-green-200 cursor-pointer ${
+                    className={` text-[14px] text-custumBlack hover:bg-green-200 cursor-pointer ${
                       selectedShareIndex == index ? "bg-green-300" : ""
                     }`}
                   >

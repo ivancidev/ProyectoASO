@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import search from "../../assets/search.svg";
+import searchWhite from "../../assets/searchWhite.svg";
 import RadioButton from "../../components/Buttons/RadioButton.jsx";
 import TextInput from "../../components/TextInput/TextInput.jsx";
 import HeaderLine from "../../components/SectionHeaderline/HeaderLine.jsx";
@@ -32,7 +32,7 @@ export default function Add() {
   const [options, setOptions] = useState([
     { label: 'Read only', name: 'read' },
     { label: 'Inherit ACLs', name: 'inherit' },
-    { label: 'Utilize Btfrs', name: 'utilize' }
+    { label: 'Utilize Btfrs Features', name: 'utilize' }
   ]);
   const handleCheckboxChange = (name, isChecked) => {
     // Update options array with the new checked state
@@ -42,13 +42,13 @@ export default function Add() {
   };
   return (
     <>
-      <section className="space-y-4 mt-14 p-14 justify-start items-start">
+      <section className="space-y-4 mt-14 py-14 px-10 bg-white h-screen justify-start items-start">
         <HeaderLine text="New Share" />
-        <section className="mx-52 px-56 space-y-1">
-          <h3 className="">Identification</h3>
+        <section className="mx-52 px-56 space-y-1 font-roboto text-base">
+          <h3 className="font-medium">Identification</h3>
             <TextInput label="Share Name" />
             <TextInput label="Share Description"/>
-            <section className="flex">
+            <section className="flex ml-6">
               <label>Share Type</label>
               <div className="px-5">
               <RadioButton id= "optprint" name = "shrtyp" label = "Printer"/>
@@ -58,7 +58,7 @@ export default function Add() {
             <div className="flex space-x-2">
               <TextInput label="Share Path"/>
               <button className="bg-customHover items-center justify-center flex rounded w-8 h-8">
-                <img src={search} alt="Filtro" className="w-6 h-6 opacity-none"/>
+                <img src={searchWhite} alt="Filtro" className="w-6 h-6 opacity-none"/>
               </button>
             </div>
             <div className="px-12 space-y-1">
@@ -72,22 +72,24 @@ export default function Add() {
               />
             ))}
             </div>
-              <div className="pt-2 pb-3 pr-8 pl-8  border-customBlack border-[1px] rounded-lg shadow-lg relative w-96 flex justify-center">
+            <br />
+          <h3 className="font-medium">Permisssions</h3>  
+              <div className="pt-2 pb-3 pr-8 pl-8 w-96 flex justify-center">
                 <table>
-                  <thead >
+                  <thead>
                     <tr>
-                      <th></th>
-                      <th>Read</th>
-                      <th>Write</th>
-                      <th>Execute</th>
+                      <th className="px-2"></th>
+                      <th className="px-2">Read</th>
+                      <th className="px-2">Write</th>
+                      <th className="px-2">Execute</th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody className="space-y-1">
                     {Object.entries(permissions).map(([entity, perms]) => (
                       <tr key={entity} className="w-10">
-                        <td className="">{entity.charAt(0).toUpperCase() + entity.slice(1)}</td>
+                        <td className="text-center">{entity.charAt(0).toUpperCase() + entity.slice(1)}</td>
                         {Object.entries(perms).map(([permission, value]) => (
-                          <td className="w-4" key={permission}>
+                          <td className="w-4 text-center" key={permission}>
                             <input
                               className='w-4'
                               type="checkbox"
@@ -103,7 +105,7 @@ export default function Add() {
             </div>
         </section>
       </section>
-      <FooterButtonAdd/>
+      <FooterButtonAdd title={helpTextAdd.title} description={helpTextAdd.description}/>
     </>
   );
 }
