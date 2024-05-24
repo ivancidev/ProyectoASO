@@ -11,7 +11,7 @@ export default function StartUp() {
     async function fetchData() {
       try {
         const data = await fetchStatus();
-        setStatus(data);
+        setStatus(data.status);
       } catch (error) {
         console.error("Error fetching:", error);
       }
@@ -23,7 +23,7 @@ export default function StartUp() {
     <>
       <section className="space-y-4 mt-14 py-14 px-10">
         <HeaderLine text="Service Configuration" />
-        <div>Current status:{status.status}</div>
+        <div>Current status: {status}</div>
         <div className="flex">
         <h3>After writing configuration:</h3>
         <div className="px-5">
