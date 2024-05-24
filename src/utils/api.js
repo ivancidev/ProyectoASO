@@ -28,7 +28,6 @@ const fetchStatus = async () => {
     throw error;
   }
 };
-
 const fetchRename = async (oldName, newName) => {
   try {
     const response = await fetch(`${URL_BASE}/renameShare`, {
@@ -73,8 +72,21 @@ const fetchLogin = async (user) => {
   }
 };
 
+const fetchEnable = async () => {
+  try{
+    const response = await fetch(`${URL_BASE}/enable`);
+    if(!response.ok){
+      throw new Error("Not response network");
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error nose donde pero error:", error);
+    throw error;
+  }
+};
 
 
-export { fetchShares, fetchRename, fetchLogin, fetchStatus };
+export { fetchShares, fetchRename, fetchLogin, fetchStatus, fetchEnable };
 
 
