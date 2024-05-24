@@ -3,13 +3,32 @@ import search from "../../assets/search.svg";
 import RadioButton from "../../components/Buttons/RadioButton.jsx";
 import TextInput from "../../components/TextInput/TextInput.jsx";
 import HeaderLine from "../../components/SectionHeaderline/HeaderLine.jsx";
-import FooterButtons from "../../components/Buttons/FooterButtons.jsx";
+import FooterButtonAdd from "../../components/Buttons/FooterButtonAdd.jsx";
 import React, { useState } from "react";
 import { helpTextAdd } from "../../utils/helpText.js";
 import Checkbox from "../../components/Checkbox/Checkbox.jsx";
 import PermissionModal from "../../modals/Permissions.jsx";
 export default function Add() {
-  const [isModalOpen, setModalOpen] = useState(false);
+  const [permissions, setPermissions] = useState({
+    user: { read: false, write: false, execute: false },
+    group: { read: false, write: false, execute: false },
+    others: { read: false, write: false, execute: false },
+  });
+  const handlePermissionChange = (entity, permission) => {
+    setPermissions((prevPermissions) => ({
+      ...prevPermissions,
+      [entity]: {
+        ...prevPermissions[entity],
+        [permission]: !prevPermissions[entity][permission],
+      },
+    }));
+  };
+
+  const handleSubmit = () => {
+    // Here you can handle the submission of the selected permissions
+    console.log('Selected Permissions:', permissions);
+    // Close the modal or perform other actions
+  };
   const [options, setOptions] = useState([
     { label: 'Read only', name: 'read' },
     { label: 'Inherit ACLs', name: 'inherit' },
@@ -25,21 +44,15 @@ export default function Add() {
     <>
       <section className="space-y-4 mt-14 p-14 justify-start items-start">
         <HeaderLine text="New Share" />
-        {isModalOpen && (
-        <PermissionModal
-          isOpen={isModalOpen}
-          onClose={() => setModalOpen(false)}
-        />
-      )}
-        <section className="mx-54 px-56 space-y-1">
+        <section className="mx-52 px-56 space-y-1">
           <h3 className="">Identification</h3>
             <TextInput label="Share Name" />
             <TextInput label="Share Description"/>
             <section className="flex">
-              <div className="px-5">
               <label>Share Type</label>
-                <RadioButton id= "optprint" name = "shrtyp" label = "Printer"/>
-                <RadioButton id= "optdirec" name = "shrtyp" label = "Directory"/>
+              <div className="px-5">
+              <RadioButton id= "optprint" name = "shrtyp" label = "Printer"/>
+              <RadioButton id= "optdirec" name = "shrtyp" label = "Directory"/>
               </div>
             </section>
             <div className="flex space-x-2">
@@ -48,7 +61,7 @@ export default function Add() {
                 <img src={search} alt="Filtro" className="w-6 h-6 opacity-none"/>
               </button>
             </div>
-            <div>
+            <div className="px-12 space-y-1">
             {options.map((option) => (
               <Checkbox
                 key={option.name} // Important for performance with dynamic lists
@@ -59,15 +72,38 @@ export default function Add() {
               />
             ))}
             </div>
-            <button
-              onClick={() => setModalOpen(true)}
-                  className="bg-customHover w-28 h-10 p-1 text-white rounded-[100px] flex items-center justify-center"
-            >
-              Next
-            </button>
+              <div className="pt-2 pb-3 pr-8 pl-8  border-customBlack border-[1px] rounded-lg shadow-lg relative w-96 flex justify-center">
+                <table>
+                  <thead >
+                    <tr>
+                      <th></th>
+                      <th>Read</th>
+                      <th>Write</th>
+                      <th>Execute</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {Object.entries(permissions).map(([entity, perms]) => (
+                      <tr key={entity} className="w-10">
+                        <td className="">{entity.charAt(0).toUpperCase() + entity.slice(1)}</td>
+                        {Object.entries(perms).map(([permission, value]) => (
+                          <td className="w-4" key={permission}>
+                            <input
+                              className='w-4'
+                              type="checkbox"
+                              checked={value}
+                              onChange={() => handlePermissionChange(entity, permission)}
+                            />
+                          </td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+            </div>
         </section>
       </section>
-      <FooterButtons title={helpTextAdd.title} description={helpTextAdd.description} />
+      <FooterButtonAdd/>
     </>
   );
 }
