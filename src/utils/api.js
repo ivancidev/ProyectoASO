@@ -49,8 +49,32 @@ const fetchRename = async (oldName, newName) => {
   } catch (error) {
     console.error('Error:', error);
   }
-}
+};
 
-export { fetchShares, fetchRename };
+const fetchLogin = async (user) => {
+  try {
+    const response = await fetch(`${URL_BASE}/login`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(user),
+    });
+
+    if (!response.ok) {
+      throw new Error('Cant login');
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error login:', error);
+    throw error;
+  }
+};
+
+
+
+export { fetchShares, fetchRename, fetchLogin };
 
 
