@@ -1,7 +1,7 @@
 import RadioButton from "../../components/Buttons/RadioButton.jsx";
 import HeaderLine from "../../components/SectionHeaderline/HeaderLine.jsx";
 import React, { useState, useEffect } from "react";
-import FooterButtons from "../../components/Buttons/FooterButtons.jsx";
+import FooterButtonStart from "../../components/Buttons/FooterButtonStart.jsx";
 import { helpTextStartUp } from "../../utils/helpText.js";
 import { fetchStatus, fetchEnable } from "../../utils/api"
 
@@ -57,7 +57,7 @@ export default function StartUp() {
           </div>
         </section>
       </section>
-      <FooterButtons title={helpTextStartUp.title} description={helpTextStartUp.description} />
+      <FooterButtonStart title={helpTextStartUp.title} description={helpTextStartUp.description} />
     </>
   );
 }

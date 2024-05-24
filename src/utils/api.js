@@ -86,7 +86,26 @@ const fetchEnable = async () => {
   }
 };
 
+const fetchUpdateStart = async (actual, onReboot) => {
+  try {
+    const response = await fetch(`${URL_BASE}/update_samba`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ actual: actual, onReboot: onReboot })
+    });
+    const data = await response.json();
+    if (response.ok) {
+      console.log(data.message);
+    } else {
+      console.log(data.message);
+    }
+  } catch (error) {
+    console.error('Error:', error);
+  }
+};
 
-export { fetchShares, fetchRename, fetchLogin, fetchStatus, fetchEnable };
+export { fetchShares, fetchRename, fetchLogin, fetchStatus, fetchEnable, fetchUpdateStart};
 
 
