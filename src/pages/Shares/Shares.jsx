@@ -6,14 +6,12 @@ import edit from "../../assets/edit.svg";
 import remove from "../../assets/delete.svg";
 import minus from "./assets/minus.svg";
 import RadioButton from "../../components/Buttons/RadioButton.jsx";
-import { Link } from "react-router-dom";
 import HeaderLine from "../../components/SectionHeaderline/HeaderLine.jsx";
 import DeleteConfirmation from "../../modals/DeleteConfirm.jsx";
 import Table from "../../components/Table/Table.jsx";
 import React, { useState } from "react";
-
-import { helpTextShares } from "../../utils/helpText.js";
 import Button from "../../components/Buttons/Button.jsx";
+
 export default function Shares() {
   const [contador, setContador] = useState(0);
   const [isModalOpen, setModalOpen] = useState(false);
@@ -55,12 +53,13 @@ export default function Shares() {
           Rename
         </button>
         <div className="flex items-center justify-evenly w-96">
-
-          <Button text={ "Add" } image={add} route={"/Shares/Add"} />
-          <Button text={ "Edit" } image={edit} route={"/Shares/Edit"} />
-          <Button  onClick={() => setModalOpen(true)} text={ "Delete" } image={remove} />
-
-          
+          <Button text={"Add"} image={add} route={"/Shares/Add"} />
+          <Button text={"Edit"} image={edit} route={"/Shares/Edit"} />
+          <Button
+            onClick={() => setModalOpen(true)}
+            text={"Delete"}
+            image={remove}
+          />
         </div>
       </div>
       <div className="flex justify-between items-center w-full pt-6 pb-3">

@@ -1,6 +1,31 @@
 import iconSamba from "../../assets/iconSamba.svg";
+import React, {useState} from "react";
+import { fetchLogin } from "../../utils/api";
+import { useNavigate } from "react-router-dom";
 
-const Login = ({ onLogin }) => {
+const Login = ({onLogin}) => {
+  const navigate = useNavigate();
+  const [user,setUser] = useState({
+    username:'',
+    password:''
+  })
+  const handleOnChangeUser = (a) =>{
+    setUser({
+      ...user,
+      [a.target.name]: a.target.value,
+  })
+  }
+  const validateLogin = async ()=>{
+    try {
+      const data = await fetchLogin(user); 
+      if (data.message === "Login successful") { 
+        navigate("/Start-Up")
+      } 
+    } catch (error) {
+      console.error("Error login:", error);
+    }
+  }
+
   return (
     <section className="flex w-screen h-screen bg-customServer items-center">
       <div className="w-1/2 flex justify-center">
@@ -23,22 +48,26 @@ const Login = ({ onLogin }) => {
             <h4 className="text-base mt-10 font-secular">User</h4>
             <input
               type="text"
-              name=""
-              id=""
+              name="username"
               placeholder="Enter your username"
+              value={user.username}
+              onChange={handleOnChangeUser}
               className="w-64 h-9 mt-3 border-b-[1px] border-r-[1px] border-customBlack rounded-lg focus:outline-none p-1 font-roboto text-sm bg-white"
+           
             />
             <h4 className="text-base mt-14 font-secular">Password</h4>
             <input
-              type="text"
-              name=""
-              id=""
+              type="password"
+              name="password"
+              value={user.password}
+              onChange={handleOnChangeUser}
+         
               placeholder="Enter your password"
               className="w-64 h-9 mt-3 border-b-[1px] border-r-[1px] border-customBlack rounded-lg focus:outline-none p-1 font-roboto text-sm bg-white"
             />
           </div>
           <button
-            onClick={onLogin}
+            onClick={validateLogin}
             className="bg-customBlack font-roboto mt-14 w-28 h-10 p-1 text-white rounded-[100px] flex items-center justify-center"
           >
             <p>Send</p>
