@@ -33,8 +33,8 @@ const Edit = ({ resource }) => {
   };
 
   const renderDetails = () => {
-    const entries = Object.entries(resource).filter(([key, value]) => value);
-    return entries.map(([key, value]) => (
+    const filteredEntries = Object.entries(resource).filter(([key, value]) => key !== "name" && value);
+    return filteredEntries.map(([key, value]) => (
       <tr
         key={key}
         className={`hover:bg-green-70 ${selectedKey === key ? "bg-customHover" : ""}`}
@@ -45,7 +45,7 @@ const Edit = ({ resource }) => {
       </tr>
     ));
   };
-
+  
   return (
     <section className="fixed inset-0 flex-col pt-28 px-10 h-screen text-customBlack bg-white">
       <HeaderLine text={resource.name} />
