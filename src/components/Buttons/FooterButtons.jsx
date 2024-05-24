@@ -9,10 +9,11 @@ const FooterButtons = ({
   oldName,
   newName,
   setNewName,
+  handleSend,
+  isButton
 }) => {
   const [isModalHelp, setModalHelp] = useState(false);
   const [showMessage, setShowMessage] = useState(false);
-
   const handleClick = () => {
     if (newName !== null) {
       fetchRename(oldName, newName);
@@ -61,12 +62,17 @@ const FooterButtons = ({
           >
             <p>Cancel</p>
           </button>
-          <button
+          {isButton? (<button
+            onClick={handleSend}
+            className="hover:bg-curtomButton bg-customHover w-28 h-10 p-1 text-white rounded-[100px] flex items-center justify-center"
+          >
+            <p>Guardar</p>
+          </button>): (<button
             onClick={handleClick}
             className="hover:bg-curtomButton bg-customHover w-28 h-10 p-1 text-white rounded-[100px] flex items-center justify-center"
           >
             <p>Ok</p>
-          </button>
+          </button>) }
         </div>
       </div>
     </>
