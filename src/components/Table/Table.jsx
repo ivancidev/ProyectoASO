@@ -73,7 +73,7 @@ const Table = ({ isModalRename, onCloseRename, isModalEdit }) => {
                     }`}
                   >
                     <td className="pl-1">{share.status}</td>
-                    <td className="pl-8">{share.readOnly}</td>
+                    <td className="pl-8">{share.readOnly? share.readOnly: 'Yes'}</td>
                     <td className="pl-26">{share.name}</td>
                     <td className="pl-8">{share.path}</td>
                     <td className="pl-28">{share.guestAccess}</td>
@@ -84,13 +84,13 @@ const Table = ({ isModalRename, onCloseRename, isModalEdit }) => {
           </tbody>
         </table>
       </div>
-      <FooterButtons
+      { isModalEdit == false ? (<FooterButtons
         title={helpTextShares.title}
         description={helpTextShares.description}
         oldName = {oldName}
         newName = {newName}
         setNewName = {setNewName}
-      />
+      />): ""}
     </>
   );
 };
