@@ -12,6 +12,7 @@ const Succesfully = ({ show, onLoadingComplete, newName }) => {
           if (prev >= 100) {
             clearInterval(interval);
             onLoadingComplete();
+            window.location.href = "/Shares";
             return 100;
           }
           return prev + 2;
