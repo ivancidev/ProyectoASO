@@ -16,9 +16,9 @@ const fetchShares = async () => {
   }
 };
 const fetchStatus = async () => {
-  try{
+  try {
     const response = await fetch(`${URL_BASE}/start`);
-    if(!response.ok){
+    if (!response.ok) {
       throw new Error("Not response network");
     }
     const data = await response.json();
@@ -31,11 +31,11 @@ const fetchStatus = async () => {
 const fetchRename = async (oldName, newName) => {
   try {
     const response = await fetch(`${URL_BASE}/renameShare`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({ oldName: oldName, newName: newName })
+      body: JSON.stringify({ oldName: oldName, newName: newName }),
     });
     const data = await response.json();
 
@@ -44,30 +44,29 @@ const fetchRename = async (oldName, newName) => {
     } else {
       console.log(data.message);
     }
-    
   } catch (error) {
-    console.error('Error:', error);
+    console.error("Error:", error);
   }
 };
 
 const fetchLogin = async (user) => {
   try {
     const response = await fetch(`${URL_BASE}/login`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(user),
     });
 
     if (!response.ok) {
-      throw new Error('Cant login');
+      throw new Error("Cant login");
     }
 
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error('Error login:', error);
+    console.error("Error login:", error);
     throw error;
   }
 };
@@ -106,6 +105,27 @@ const fetchUpdateStart = async (actual, onReboot) => {
   }
 };
 
-export { fetchShares, fetchRename, fetchLogin, fetchStatus, fetchEnable, fetchUpdateStart};
+
+const fectchEdit = (share_name, jsonData) => {
+  fetch(`${URL_BASE}/shares/${share_name}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: jsonData,
+  })
+    .then((response) => {
+      if (response.ok) {
+        console.log("Data sent correctly");
+      } else {
+        console.error("Error sending data");
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+};
+
+export { fetchShares, fetchRename, fetchLogin, fetchStatus, fectchEdit, fetchEnable, fetchUpdateStart  };
 
 

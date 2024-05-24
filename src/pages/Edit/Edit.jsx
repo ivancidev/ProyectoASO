@@ -1,49 +1,76 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Button from "../../components/Buttons/Button";
 import HeaderLine from "../../components/SectionHeaderline/HeaderLine";
 import edit from "../../assets/edit.svg";
 import add from "../../assets/add.svg";
 import remove from "../../assets/delete.svg";
-import FooterButtons from "../../components/Buttons/FooterButtons";
 import { helpTextEdit } from "../../utils/helpText";
 import AddOption from "../../modals/AddOption.jsx";
 import EditInput from "../../modals/EditInput.jsx";
 import DeleteValue from "../../modals/DeleteValue.jsx";
 import EditCheck from "../../modals/EditCheck.jsx";
+import { fectchEdit } from "../../utils/api.js";
+import Succesfully from "../../modals/Succesfully.jsx";
+import FooterButtons from "../../components/Buttons/FooterButtons.jsx";
 
 const Edit = ({ resource }) => {
   const [isOpenAddOp, setOpenAddOp] = useState(false);
-  const [isEdit, setEdit] = useState(false);
-  const [isEditInp, setEditInp] = useState(false);
+  const [isEditInput, setEditInput] = useState(false);
+  const [isEditCheck, setEditCheck] = useState(false);
   const [isDel, setDel] = useState(false);
   const [selectedKey, setSelectedKey] = useState(null);
-  const navigate = useNavigate();
+  const [isModalSuccesfully, setIsModalSuccesfully] = useState(false);
+  const [isButton, setIsButton] = useState(false);
 
   const handleEditClick = () => {
     if (selectedKey !== null) {
-      setEdit(true);
+      const selectedValue = resource[selectedKey];
+      if (selectedValue === "Yes" || selectedValue === "No") {
+        setEditCheck(true);
+      } else {
+        setEditInput(true);
+      }
     }
   };
 
   const handleValueChange = (newValue) => {
+    setIsButton(true);
     resource[selectedKey] = newValue;
-    setEdit(false);
-    setSelectedKey(null);
+    setEditInput(false);
+    // setSelectedKey(null);
+  };
+
+  const handleSendData = () => {
+    setIsModalSuccesfully(true);
+    const jsonData = JSON.stringify({ [selectedKey]: resource[selectedKey] });
+    fectchEdit(resource.name, jsonData);
   };
 
   const renderDetails = () => {
-    const entries = Object.entries(resource).filter(([key, value]) => value);
-    return entries.map(([key, value]) => (
+    const filteredEntries = Object.entries(resource).filter(
+      ([key, value]) =>
+        key !== "name" &&
+        key !== "status" &&
+        value &&
+        key !== "guestAccess" &&
+        value
+    );
+    return filteredEntries.map(([key, value]) => (
       <tr
         key={key}
-        className={`hover:bg-green-70 ${selectedKey === key ? "bg-customHover" : ""}`}
+        className={`hover:bg-green-70 cursor-pointer ${
+          selectedKey === key ? "bg-customHover" : ""
+        }`}
         onClick={() => setSelectedKey(key)}
       >
         <td className="font-bold pr-4">{key}</td>
         <td className="pl-2">{value}</td>
       </tr>
     ));
+  };
+  const handleIsButton = () => {
+    setIsButton(false);
+    setIsModalSuccesfully(false);
   };
 
   return (
@@ -53,20 +80,35 @@ const Edit = ({ resource }) => {
         {isOpenAddOp && (
           <AddOption isOpen={isOpenAddOp} onClose={() => setOpenAddOp(false)} />
         )}
-        {isEdit && (
-          <EditCheck
-            isOpen={isEdit}
-            onClose={() => setEdit(false)}
+        {isEditInput && (
+          <EditInput
+            isOpen={isEditInput}
+            onClose={() => setEditInput(false)}
             name={resource[selectedKey]}
             updateShareName={handleValueChange}
             text={"Current Option:"}
             option={selectedKey}
           />
         )}
-        {isEditInp && (
-          <EditInput isOpen={isEditInp} onClose={() => setEditInp(false)} />
+        {isEditCheck && (
+          <EditCheck
+            isOpen={isEditCheck}
+            onClose={() => setEditCheck(false)}
+            selectedValue={resource[selectedKey]}
+            selectedKey={selectedKey}
+            name={resource.name}
+          />
         )}
         {isDel && <DeleteValue isOpen={isDel} onClose={() => setDel(false)} />}
+        {isModalSuccesfully ? (
+          <Succesfully
+            show={isModalSuccesfully}
+            newName={isModalSuccesfully}
+            onLoadingComplete={handleIsButton}
+          />
+        ) : (
+          ""
+        )}
         <div className="w-full">
           <table className="w-full border border-black">
             <thead>
@@ -86,6 +128,8 @@ const Edit = ({ resource }) => {
         <FooterButtons
           title={helpTextEdit.title}
           description={helpTextEdit.description}
+          handleSend={handleSendData}
+          isButton={isButton}
         />
       </div>
     </section>
