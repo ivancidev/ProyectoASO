@@ -1,30 +1,30 @@
 import iconSamba from "../../assets/iconSamba.svg";
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { fetchLogin } from "../../utils/api";
-import { useNavigate } from "react-router-dom";
 
-const Login = ({onLogin}) => {
-  const navigate = useNavigate();
-  const [user,setUser] = useState({
-    username:'',
-    password:''
-  })
-  const handleOnChangeUser = (a) =>{
+const Login = () => {
+  const [user, setUser] = useState({
+    username: "",
+    password: "",
+  });
+
+  const handleOnChangeUser = (a) => {
     setUser({
       ...user,
       [a.target.name]: a.target.value,
-  })
-  }
-  const validateLogin = async ()=>{
+    });
+  };
+  const validateLogin = async () => {
     try {
-      const data = await fetchLogin(user); 
-      if (data.message === "Login successful") { 
-        navigate("/Start-Up")
-      } 
+      const data = await fetchLogin(user);
+      if (data.message === "Login successful") {
+        localStorage.setItem("isLoggedIn", "true");
+        window.location.href = "Start-Up";
+      }
     } catch (error) {
       console.error("Error login:", error);
     }
-  }
+  };
 
   return (
     <section className="flex w-screen h-screen bg-customServer items-center">
@@ -53,7 +53,6 @@ const Login = ({onLogin}) => {
               value={user.username}
               onChange={handleOnChangeUser}
               className="w-64 h-9 mt-3 border-b-[1px] border-r-[1px] border-customBlack rounded-lg focus:outline-none p-1 font-roboto text-sm bg-white"
-           
             />
             <h4 className="text-base mt-14 font-secular">Password</h4>
             <input
@@ -61,7 +60,6 @@ const Login = ({onLogin}) => {
               name="password"
               value={user.password}
               onChange={handleOnChangeUser}
-         
               placeholder="Enter your password"
               className="w-64 h-9 mt-3 border-b-[1px] border-r-[1px] border-customBlack rounded-lg focus:outline-none p-1 font-roboto text-sm bg-white"
             />
@@ -76,6 +74,6 @@ const Login = ({onLogin}) => {
       </div>
     </section>
   );
-}
+};
 
 export default Login;
