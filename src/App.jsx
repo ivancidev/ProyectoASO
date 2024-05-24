@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar/Navbar.jsx";
 import StartUp from "./pages/StartUp/StartUp.jsx";
 import Shares from "./pages/Shares/Shares.jsx";
 import Identity from "./pages/Identity/Identity.jsx";
+import Users from "./pages/Users/Users.jsx";
 import Add from "./pages/Add/Add.jsx";
 import Login from "./pages/Login/Login.jsx";
 
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: "Identity",
         element: <Identity />,
+      },
+      {
+        path: "Users",
+        element: <Users />,
       },
       {
         path: "Shares/Add",

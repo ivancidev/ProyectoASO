@@ -49,7 +49,12 @@ const FooterButtonAdd = ({
           ?
         </button>
         <div className="flex items-center justify-between w-64">
-          <Button text={"Back"} route={"/Shares"}/>
+          <button
+            
+            className="hover:border-curtomButton w-28 h-10 p-1 text-customHover rounded-[100px] flex items-center justify-center border-[1px] border-customBlack"
+          >
+            <p>Back</p>
+          </button>
           <button
             onClick={handleClick}
             className="hover:bg-curtomButton bg-customHover w-28 h-10 p-1 text-white rounded-[100px] flex items-center justify-center"

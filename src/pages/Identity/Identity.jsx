@@ -12,7 +12,8 @@ export default function Identity() {
   };
 
   return (
-    <section className="flex-col px-10 mt-28 ml-18">
+    <>
+    <section className="flex-col mt-14 py-14 px-10 bg-white h-screen">
       <HeaderLine text="Base Settings" />
       <div className="ml-6 mt-6">
         <div>
@@ -35,5 +36,6 @@ export default function Identity() {
       </div>
       <FooterButtons title={helTextIdentity.title} description={helTextIdentity.description}/>
     </section>
+    </>
   );
 }
