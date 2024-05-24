@@ -15,7 +15,7 @@ const fetchShares = async () => {
     throw error;
   }
 };
-export const fetchStatus = async () => {
+const fetchStatus = async () => {
   try{
     const response = await fetch(`${URL_BASE}/start`);
     if(!response.ok){
@@ -75,6 +75,6 @@ const fetchLogin = async (user) => {
 
 
 
-export { fetchShares, fetchRename, fetchLogin };
+export { fetchShares, fetchRename, fetchLogin, fetchStatus };
 
 
