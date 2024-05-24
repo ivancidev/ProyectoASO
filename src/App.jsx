@@ -39,17 +39,12 @@ const router = createBrowserRouter([
 const App = () => {
   const storedIsLoggedIn = localStorage.getItem('isLoggedIn');
 
-  const handleLogin = () => {
-    localStorage.setItem('isLoggedIn', 'true');
-    window.location.href = "Start-Up"; 
-  };
-
   return (
     <React.StrictMode>
       {storedIsLoggedIn ? (
         <RouterProvider router={router} />
       ) : (
-        <Login onLogin={handleLogin} />
+        <Login />
       )}
     </React.StrictMode>
   );
