@@ -145,7 +145,41 @@ const fetchDelete = async (name) => {
   }
 };
 
+const fetchAdd = async (resource) => {
+  try {
+    const response = await fetch(`${URL_BASE}/addShare`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(resource)
+    });
 
+    if (response.ok) {
+      console.log("Add resource");
+    } else {
+      console.log("Not add resource");
+    }
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
+
+const fetchDirectorys = async (user) => {
+  try {
+    const response = await fetch(`${URL_BASE}/files?user=${user}`);
+
+    if (!response.ok) {
+      throw new Error("Not response network");
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching shares:", error);
+    throw error;
+  }
+};
 
 
 export {
@@ -156,5 +190,7 @@ export {
   fectchEdit,
   fetchEnable,
   fetchUpdateStart,
-  fetchDelete
+  fetchDelete,
+  fetchAdd,
+  fetchDirectorys
 };
