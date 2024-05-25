@@ -6,8 +6,24 @@ import { helpTextStartUp } from "../../utils/helpText.js";
 import { fetchStatus, fetchEnable } from "../../utils/api"
 
 export default function StartUp() {
-  const [status, setStatus] = useState('');
   const [enableBoot, setEnableBoot] = useState('');
+  const [status, setStatus] = useState('');
+  const [selectedValue, setSelectedValue] = useState('optrbt4');
+
+  useEffect(() => {
+    const fetchInitialStatus = async () => {
+      try {
+        const data = await fetchEnable();
+        setEnableBoot(data.status); // Suponiendo que el objeto tiene una propiedad 'status'
+      } catch (error) {
+        console.error('Error fetching initial status:', error);
+        // Aquí podrías manejar el error, por ejemplo, mostrar un mensaje al usuario
+      }
+    };
+    fetchInitialStatus();
+  }, []);
+
+
   useEffect(() => {
     async function fetchData() {
       try {
@@ -19,22 +35,15 @@ export default function StartUp() {
     }
     fetchData();
   }, []);
-  useEffect(() => {
-    async function fetchData2() {
-      try {
-        const data = await fetchEnable();
-        setEnableBoot(data.status);
-      } catch (error) {
-        console.error("Error fetching:", error);
-      }
-    }
-    fetchData2();
-  }, []);
+  
 
   const handleRadioChange = (e) => {
     setSelectedValue(e.target.id);
   };
-  const [selectedValue, setSelectedValue] = useState('optrbt4');
+  const handleRadioChange2 = (e) => {
+    setEnableBoot(e.target.id);
+  };
+  
   return (
     <>
       <section className="space-y-4 mt-14 py-14 px-10 bg-white h-screen">
@@ -43,21 +52,21 @@ export default function StartUp() {
         <div className="flex">
         <h3>After writing configuration:</h3>
         <div className="px-5">
-            <RadioButton id="optrbt1" name="rebooting" label="Stop" checked={selectedValue=='optrbt1'} onChange={handleRadioChange}/>
-            <RadioButton id="optrbt2" name="rebooting" label="Restart" checked={selectedValue=='optrbt2'} onChange={handleRadioChange}/>
-            <RadioButton id="optrbt3" name="rebooting" label="Reload" checked={selectedValue=='optrbt3'} onChange={handleRadioChange}/>
+            <RadioButton id="stop" name="rebooting" label="Stop" checked={selectedValue=='stop'} onChange={handleRadioChange}/>
+            <RadioButton id="restart" name="rebooting" label="Restart" checked={selectedValue=='restart'} onChange={handleRadioChange}/>
+            <RadioButton id="reload" name="rebooting" label="Reload" checked={selectedValue=='reload'} onChange={handleRadioChange}/>
             <RadioButton id="optrbt4" name="rebooting" label="Keep current State" checked={selectedValue=='optrbt4'} onChange={handleRadioChange}/>
           </div>
         </div>
         <section className="flex">
           <div>After reboot:</div>
           <div className="px-5">
-            <RadioButton id="enabled" name="reboot" label="Start on boot" checked={enableBoot=='enabled'} onChange={handleRadioChange}/>
-            <RadioButton id="disabled" name="reboot" label="Do not start"  checked={enableBoot=='disabled'} onChange={handleRadioChange}/>
+            <RadioButton id="enabled" name="reboot" label="Start on boot" checked={enableBoot=='enabled'} onChange={handleRadioChange2}/>
+            <RadioButton id="disabled" name="reboot" label="Do not start"  checked={enableBoot=='disabled'} onChange={handleRadioChange2}/>
           </div>
         </section>
       </section>
-      <FooterButtonStart title={helpTextStartUp.title} description={helpTextStartUp.description} />
+      <FooterButtonStart title={helpTextStartUp.title} description={helpTextStartUp.description} actual={selectedValue} onReboot={enableBoot} />
     </>
   );
 }
