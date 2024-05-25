@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Help from "../../modals/Help";
 import Succesfully from "../../modals/Succesfully";
-import { fetchRename } from "../../utils/api";
-const FooterButtonAdd = ({ title, description, handleSubmit, name }) => {
+import { Link } from "react-router-dom";
+const FooterButtonAdd = ({ title, description, handleSubmit, name, path }) => {
   const [isModalHelp, setModalHelp] = useState(false);
   const [showMessage, setShowMessage] = useState(false);
 
@@ -39,12 +39,16 @@ const FooterButtonAdd = ({ title, description, handleSubmit, name }) => {
           ?
         </button>
         <div className="flex items-center justify-between w-64">
-          {name ? (
+          <Link to={"/Shares"}>
+            
+            <button className="hover:bg-curtomButton w-28 h-10 p-1 rounded-[100px] flex items-center justify-center bg-customHover text-white">Back</button>
+          </Link>
+          {name && path ? (
             <button
               onClick={handleSend}
               className="hover:border-curtomButton w-28 h-10 p-1 text-customHover rounded-[100px] flex items-center justify-center border-[1px] border-customBlack"
             >
-              <p>Guardar</p>
+              <p>Save</p>
             </button>
           ) : (
             <button className="hover:bg-curtomButton bg-customHover w-28 h-10 p-1 text-white rounded-[100px] flex items-center justify-center">
