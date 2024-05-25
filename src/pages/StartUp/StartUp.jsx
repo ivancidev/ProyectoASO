@@ -48,7 +48,14 @@ export default function StartUp() {
     <>
       <section className="space-y-4 mt-14 py-14 px-10 bg-white h-screen">
         <HeaderLine text="Service Configuration" />
-        <div>Current status: {status}</div>
+        <div className="flex space-x-4">
+          <div>
+            Current status: 
+          </div>
+          <div className="text-customHover">
+            {status}
+          </div>
+        </div>
         <div className="flex">
         <h3>After writing configuration:</h3>
         <div className="px-5">
