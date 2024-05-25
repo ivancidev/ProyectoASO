@@ -1,5 +1,5 @@
 import close from "../assets/close.svg";
-const DeleteConfirmation = ({ isOpen, onClose }) => {
+const DeleteConfirmation = ({ isOpen, onClose, onConfirm, shareName }) => {
   if (!isOpen) return null;
 
   return (
@@ -11,11 +11,14 @@ const DeleteConfirmation = ({ isOpen, onClose }) => {
         >
           <img src={close} alt="close" />
         </button>
-        <p className="font-roboto text-base">If you delete share print$ all its settings will be lost. <br />
+        <h2 className="text-lg font-semibold">Confirm Delete</h2>
+        <p className="font-roboto text-base">If you delete share 
+        "{shareName}" all its settings will be lost. <br />
           Really delete it?
         </p>
         <div className="flex items-center justify-center space-x-6 mt-8">
-            <button className="w-20 py-2 bg-customHover rounded-[20px] text-white">
+            <button onClick={onConfirm} 
+            className="w-20 py-2 bg-customHover rounded-[20px] text-white">
                Yes 
             </button>
             <button onClick={onClose}  className="w-20 py-2 border-black border-[1px] text-customHover rounded-[20px]">

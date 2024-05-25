@@ -5,7 +5,7 @@ import FooterButtons from "../Buttons/FooterButtons";
 import { helpTextShares } from "../../utils/helpText";
 import Edit from "../../pages/Edit/Edit";
 
-const Table = ({ isModalRename, onCloseRename, isModalEdit }) => {
+const Table = ({ isModalRename, onCloseRename, isModalEdit, openDeleteModal }) => {
   const [shares, setShares] = useState(null);
   const [selectedShareIndex, setSelectedShareIndex] = useState(null);
   const [oldName, setOldName] = useState("");
@@ -29,6 +29,11 @@ const Table = ({ isModalRename, onCloseRename, isModalEdit }) => {
     updatedShares[selectedShareIndex].name = newNameResource;
     setNewName(newNameResource);
     setShares(updatedShares);
+  };
+
+  const handleRowClick = (index) => {
+    setSelectedShareIndex(index);
+    openDeleteModal(shares[index]); 
   };
 
   return (
@@ -67,7 +72,7 @@ const Table = ({ isModalRename, onCloseRename, isModalEdit }) => {
               ? shares.map((share, index) => (
                   <tr
                     key={index}
-                    onClick={() => setSelectedShareIndex(index)}
+                    onClick={() => handleRowClick(index)}
                     className={` text-[14px] text-custumBlack hover:bg-green-200 cursor-pointer ${
                       selectedShareIndex == index ? "bg-green-300" : ""
                     }`}
