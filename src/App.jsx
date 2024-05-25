@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar.jsx";
 import StartUp from "./pages/StartUp/StartUp.jsx";
@@ -43,7 +43,15 @@ const router = createBrowserRouter([
 
 const App = () => {
   const storedIsLoggedIn = localStorage.getItem('isLoggedIn');
+  useEffect(() => {
+    // Agrega overflow: hidden al body
+    document.body.style.overflow = 'hidden';
 
+    // Limpia el estilo cuando el componente se desmonta
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, []);
   return (
     <React.StrictMode>
       {storedIsLoggedIn ? (
