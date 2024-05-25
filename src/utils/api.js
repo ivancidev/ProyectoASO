@@ -72,9 +72,9 @@ const fetchLogin = async (user) => {
 };
 
 const fetchEnable = async () => {
-  try{
+  try {
     const response = await fetch(`${URL_BASE}/enable`);
-    if(!response.ok){
+    if (!response.ok) {
       throw new Error("Not response network");
     }
     const data = await response.json();
@@ -88,11 +88,11 @@ const fetchEnable = async () => {
 const fetchUpdateStart = async (actual, onReboot) => {
   try {
     const response = await fetch(`${URL_BASE}/update_samba`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({ actual: actual, onReboot: onReboot })
+      body: JSON.stringify({ actual: actual, onReboot: onReboot }),
     });
     const data = await response.json();
     if (response.ok) {
@@ -101,10 +101,9 @@ const fetchUpdateStart = async (actual, onReboot) => {
       console.log(data.message);
     }
   } catch (error) {
-    console.error('Error:', error);
+    console.error("Error:", error);
   }
 };
-
 
 const fectchEdit = (share_name, jsonData) => {
   fetch(`${URL_BASE}/shares/${share_name}`, {
@@ -126,6 +125,36 @@ const fectchEdit = (share_name, jsonData) => {
     });
 };
 
-export { fetchShares, fetchRename, fetchLogin, fetchStatus, fectchEdit, fetchEnable, fetchUpdateStart  };
+const fetchDelete = async (name) => {
+  try {
+    const response = await fetch(`${URL_BASE}/deleteShare`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ share_name: name }),
+    });
+
+    if (response.ok) {
+      console.log("Deleted resource");
+    } else {
+      console.log("Not Deleted resource");
+    }
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
 
 
+
+
+export {
+  fetchShares,
+  fetchRename,
+  fetchLogin,
+  fetchStatus,
+  fectchEdit,
+  fetchEnable,
+  fetchUpdateStart,
+  fetchDelete
+};
