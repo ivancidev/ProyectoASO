@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 
 const Succesfully = ({ show, onLoadingComplete, newName }) => {
-  if (!newName) return null;
+
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     if (show) {
-      setProgress(0);
+      setProgress(0); 
       const interval = setInterval(() => {
         setProgress((prev) => {
           if (prev >= 100) {

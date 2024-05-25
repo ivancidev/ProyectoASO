@@ -73,8 +73,40 @@ const fetchLogin = async (user) => {
   }
 };
 
+const fetchWorkgroup = async () => {
+  try {
+    const response = await fetch(`${URL_BASE}/workgroup`);
+    if (!response.ok) {
+      throw new Error("Error fetching workgroup");
+    }
+    const data = await response.json();
+    return data.workgroup;
+  } catch (error) {
+    console.error("Error fetching workgroup:", error);
+    throw error;
+  }
+};
 
+const updateWorkgroup = async (newWorkgroup) => {
+  try {
+    const response = await fetch(`${URL_BASE}/workgroup`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ workgroup: newWorkgroup }),
+    });
 
-export { fetchShares, fetchRename, fetchLogin, fetchStatus };
+    if (!response.ok) {
+      throw new Error('Failed to update workgroup');
+    }
+
+    return await response.json();
+  } catch (error) {
+    throw new Error('Failed to update workgroup: ' + error.message);
+  }
+};
+
+export { fetchShares, fetchRename, fetchLogin, fetchStatus, fetchWorkgroup, updateWorkgroup };
 
 

@@ -9,7 +9,7 @@ import RadioButton from "../../components/Buttons/RadioButton.jsx";
 import HeaderLine from "../../components/SectionHeaderline/HeaderLine.jsx";
 import DeleteConfirmation from "../../modals/DeleteConfirm.jsx";
 import Table from "../../components/Table/Table.jsx";
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Button from "../../components/Buttons/Button.jsx";
 
 export default function Shares() {
@@ -44,10 +44,12 @@ export default function Shares() {
         </div>
       </div>
       <Table
+      
         isModalRename={isModalRename}
         onCloseRename={() => setModalRename(false)}
         isModalEdit={isModalEdit}
-        setIsModalEdit = {setIsModalEdit}
+        setIsModalEdit={setIsModalEdit}
+        
       />
       <div className="flex items-center justify-between font-roboto text-sm mt-6">
         <div className="flex  items-center justify-evenly w-96">
@@ -57,18 +59,7 @@ export default function Shares() {
           >
             Rename
           </button>
-          <button
-            onClick={() => setModalRename(true)}
-            className="bg-customHover w-28 h-10 p-1 text-white rounded-[100px]"
-          >
-            Guest Access
-          </button>
-          <button
-            onClick={() => setModalRename(true)}
-            className="bg-customHover w-28 h-10 p-1 text-white rounded-[100px]"
-          >
-            Toggle Status
-          </button>
+          
           </div>
         <div className="flex items-center justify-evenly w-96">
           <Button text={"Add"} image={add} route={"/Shares/Add"} />

@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react";
-import { fetchShares } from "../../utils/api";
 import Rename from "../../modals/Rename";
 import FooterButtons from "../Buttons/FooterButtons";
 import { helpTextShares } from "../../utils/helpText";
 import Edit from "../../pages/Edit/Edit";
+import { fetchShares } from "../../utils/api";
 
-const Table = ({ isModalRename, onCloseRename, isModalEdit }) => {
+const Table = ({  isModalRename, onCloseRename, isModalEdit }) => {
   const [shares, setShares] = useState(null);
   const [selectedShareIndex, setSelectedShareIndex] = useState(null);
   const [oldName, setOldName] = useState("");
   const [newName, setNewName] = useState(null);
-
+  const [toggleGuestAccess, setToggleGuestAccess] = useState(false);
+  const[toggleStatus, setToggleStatus] = useState(false)
   useEffect(() => {
     async function fetchData() {
       try {
@@ -22,6 +23,20 @@ const Table = ({ isModalRename, onCloseRename, isModalEdit }) => {
     }
     fetchData();
   }, []);
+  
+  const handleToggleGuestAccess = () => {
+    const updatedShares = [...shares];
+    updatedShares[selectedShareIndex].guestAccess = toggleGuestAccess ? "No" : "Yes";
+    setShares(updatedShares);
+    setToggleGuestAccess(!toggleGuestAccess);
+  };
+
+  const handleToggleStatus = () => {
+    const updatedShares = [...shares];
+    updatedShares[selectedShareIndex].status = toggleStatus ? "Enable" : "Disable";
+    setShares(updatedShares);
+    setToggleStatus(!toggleStatus);
+  };
 
   const updateShareName = (newNameResource) => {
     const updatedShares = [...shares];
@@ -31,6 +46,7 @@ const Table = ({ isModalRename, onCloseRename, isModalEdit }) => {
     setShares(updatedShares);
   };
 
+  
   return (
     <>
       {selectedShareIndex !== null ? (
@@ -84,6 +100,21 @@ const Table = ({ isModalRename, onCloseRename, isModalEdit }) => {
           </tbody>
         </table>
       </div>
+      <div className="flex  items-center justify-evenly w-96 font-roboto text-sm mt-6 " >
+      <button
+            onClick={handleToggleGuestAccess}
+            className={`bg-customHover w-28 h-10 p-1 text-white rounded-[100px]
+            }`}
+          >
+            Guest Access
+          </button>
+          <button
+            onClick={handleToggleStatus}
+            className="bg-customHover w-28 h-10 p-1 text-white rounded-[100px]"
+          >
+            Toggle Status
+          </button>
+      </div>
       <FooterButtons
         title={helpTextShares.title}
         description={helpTextShares.description}
@@ -91,6 +122,7 @@ const Table = ({ isModalRename, onCloseRename, isModalEdit }) => {
         newName = {newName}
         setNewName = {setNewName}
       />
+      
     </>
   );
 };
