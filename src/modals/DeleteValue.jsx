@@ -1,13 +1,9 @@
+// DeleteValue.jsx
 import close from "../assets/close.svg";
 import { useState } from "react";
 
-const DeleteValue = ({ isOpen, onClose }) => {
+const DeleteValue = ({ isOpen, onClose, onDelete, selectedKey }) => {
   if (!isOpen) return null;
-  const [inputValue, setInputValue] = useState("/opt/dir/soft");
-
-  const handleOnChange = (event) => {
-    setInputValue(event.target.value);
-  };
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-slate-400 bg-opacity-[0.4] z-50">
@@ -18,16 +14,23 @@ const DeleteValue = ({ isOpen, onClose }) => {
         >
           <img src={close} alt="close" />
         </button>
-      
-            <p className="font-roboto text-base text-center">Delete the selected entry?</p>
-        
+        <p className="font-roboto text-base text-center">
+          Delete the selected entry?
+        </p>
+        <p className="text-center">{selectedKey}</p>
         <div className="flex items-center justify-center space-x-6 mt-8">
-            <button className="w-20 py-2 bg-customHover rounded-[20px] text-white">
-               Ok 
-            </button>
-            <button onClick={onClose}  className="w-20 py-2 border-black border-[1px] text-customHover rounded-[20px]">
-                Cancel
-            </button>
+          <button
+            className="w-20 py-2 bg-customHover rounded-[20px] text-white"
+            onClick={onDelete}
+          >
+            Ok
+          </button>
+          <button
+            onClick={onClose}
+            className="w-20 py-2 border-black border-[1px] text-customHover rounded-[20px]"
+          >
+            Cancel
+          </button>
         </div>
       </div>
     </div>
