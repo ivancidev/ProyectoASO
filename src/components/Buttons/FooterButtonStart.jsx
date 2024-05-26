@@ -2,12 +2,7 @@ import React, { useState } from "react";
 import Help from "../../modals/Help";
 import Succesfully from "../../modals/Succesfully";
 import { fetchUpdateStart } from "../../utils/api";
-const FooterButtonStart = ({
-  title,
-  description,
-  actual,
-  onReboot
-}) => {
+const FooterButtonStart = ({ title, description, actual, onReboot }) => {
   const [isModalHelp, setModalHelp] = useState(false);
   const [showMessage, setShowMessage] = useState(false);
 
@@ -15,7 +10,10 @@ const FooterButtonStart = ({
     if (actual !== null) {
       fetchUpdateStart(actual, onReboot);
       setShowMessage(true);
-      //window.location.href="/Start-Up"
+      //buscar otro forma
+      setTimeout(() => {
+        window.location.href = "/Start-Up";
+      }, 10000);
     }
   };
 
@@ -57,9 +55,9 @@ const FooterButtonStart = ({
             onClick={handleLogout}
             className="hover:border-curtomButton w-28 h-10 p-1 text-customHover rounded-[100px] flex items-center justify-center border-[1px] border-customBlack"
           >
-            <p>Cancel</p>   
+            <p>Cancel</p>
           </button>
-              <button
+          <button
             onClick={handleClick}
             className="hover:bg-curtomButton bg-customHover w-28 h-10 p-1 text-white rounded-[100px] flex items-center justify-center"
           >
