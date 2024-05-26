@@ -9,7 +9,7 @@ import AddOption from "../../modals/AddOption.jsx";
 import EditInput from "../../modals/EditInput.jsx";
 import DeleteValue from "../../modals/DeleteValue.jsx";
 import EditCheck from "../../modals/EditCheck.jsx";
-import { fectchEdit } from "../../utils/api.js";
+import { fectchEdit, fetchAttribute } from "../../utils/api.js";
 import Succesfully from "../../modals/Succesfully.jsx";
 import FooterButtons from "../../components/Buttons/FooterButtons.jsx";
 
@@ -73,12 +73,28 @@ const Edit = ({ resource }) => {
     setIsModalSuccesfully(false);
   };
 
+  const handleDelete = async () => {
+    if (selectedKey !== null) {
+      const deletedOption = selectedKey;
+      const data = { resourceName: resource.name, attributeName: deletedOption };
+      console.log(data)
+      try {
+        await fetchAttribute(data);
+        setIsModalSuccesfully(true);
+        console.log("Deleted attribute successfully");
+      } catch (error) {
+        console.error("Error deleting attribute:", error);
+      }
+    }
+  };
+  
+
   return (
     <section className="fixed inset-0 flex-col pt-28 px-10 h-screen text-customBlack bg-white">
       <HeaderLine text={resource.name} />
       <div className="flex flex-col items-center justify-center mt-8 p-8 w-full max-w-screen-lg">
         {isOpenAddOp && (
-          <AddOption isOpen={isOpenAddOp} onClose={() => setOpenAddOp(false)} />
+          <AddOption isOpen={isOpenAddOp} onClose={() => setOpenAddOp(false)} resourceName={resource.name} />
         )}
         {isEditInput && (
           <EditInput
@@ -99,7 +115,12 @@ const Edit = ({ resource }) => {
             name={resource.name}
           />
         )}
-        {isDel && <DeleteValue isOpen={isDel} onClose={() => setDel(false)} />}
+        <DeleteValue
+          isOpen={isDel}
+          onClose={() => setDel(false)}
+          onDelete={handleDelete}
+          selectedKey={selectedKey}
+        />
         {isModalSuccesfully ? (
           <Succesfully
             show={isModalSuccesfully}
