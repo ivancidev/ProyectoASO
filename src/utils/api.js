@@ -180,7 +180,58 @@ const fetchDirectorys = async (user) => {
     throw error;
   }
 };
+const fetchUser = async (name, pass) => {
+  try {
+    const response = await fetch(`${URL_BASE}/add_user`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name: name, pass: pass }),
+    });
+    const data = await response.json();
+    if (response.ok) {
+      console.log(data.message);
+    } else {
+      console.log(data.message);
+    }
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+const fetchGetUser = async () => {
+  try {
+    const response = await fetch(`${URL_BASE}/samba_users`);
+    const data = await response.json();
+    if (data.success) {
+      return data.users;
+    } else {
+      throw new Error("Failed to fetch users");
+    }
+  } catch (error) {
+    console.error("Error fetching Samba users:", error);
+    throw error;
+  }
+};
 
+const fetchDeleteUser = async (username) => {
+  try {
+    const response = await fetch(`${URL_BASE}/delete_samba_user`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username: username }),
+    });
+    const data = await response.json();
+    if (!data.success) {
+      throw new Error(data.message);
+    }
+  } catch (error) {
+    console.error("Error deleting Samba user:", error);
+    throw error;
+  }
+};
 const fetchAttribute = async (data) => {
   try {
     const response = await fetch(`${URL_BASE}/deleteAttribute`, {
@@ -233,6 +284,9 @@ export {
   fetchDelete,
   fetchAdd,
   fetchDirectorys,
+  fetchUser,
+  fetchDeleteUser,
+  fetchGetUser,
   fetchAttribute,
   fetchAddAttribute
 };
