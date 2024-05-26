@@ -4,35 +4,48 @@ import remove from "../../assets/delete.svg";
 import Button from "../../components/Buttons/Button.jsx";
 import FooterButtonsUsers from "../../components/Buttons/FooterButtonsUsers";
 import { helpTextUser } from "../../utils/helpText.js";
-
+import AddUser from "../../modals/AddUser.jsx";
+import UserTable from "../../components/Table/UserTable.jsx";
+import { useState, useEffect } from "react";
+import { fetchGetUser, fetchDeleteUser } from "../../utils/api.js";
 export default function Users(){
+    const [modalAddUser, setModalAddUser] = useState(false);
+    const [users, setUsers] = useState([]);
+    const [loading, setLoading] = useState(true);
+    useEffect(() => {
+        async function getUsers(){
+            try {
+                const data = await fetchGetUser();
+                setUsers(data);
+            } catch (error) {
+                console.error("Error fetching Samba users:", error);
+                setLoading(false);
+            }finally {
+                setLoading(false);
+            }
+        }
+        getUsers()
+      }, []);
+    
+    const handleDeleteUser = async (username) => {
+        try {
+          await fetchDeleteUser(username);
+          setUsers((prevUsers) => prevUsers.filter((user) => user !== username));
+        } catch (error) {
+          console.error("Error deleting user:", error);
+        }
+    };
+    if (loading) {
+        return <div>Loading...</div>;
+    }
     return(
         <section className="mt-14 py-14 px-10 bg-white h-screen">
+            <AddUser isOpen={modalAddUser} onClose={() => setModalAddUser(false)}/>
             <HeaderLine text="Samba Users" />
             <div className="w-full flex flex-col justify-center items-center">
-                <table class="table-auto font-roboto w-60 mt-5">
-                    <thead className="h-9">
-                        <tr className="bg-customBlack text-sm text-white border border-customBlack">
-                        <th className="text-left pl-3">Username</th>
-                        </tr>
-                    </thead>
-                    <tbody className="border-[1px] border-customBlack max-h-40 overflow-y-auto font-roboto">
-                        <tr>
-                        <td>User1</td>
-                        </tr>
-                        <tr>
-                        <td>User2</td>
-                        </tr>
-                        <tr>
-                        <td>User1</td>
-                        </tr>
-                        <tr>
-                        <td>User2</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <UserTable users={users} onDelete={handleDeleteUser}/>
                 <div className="flex justify-evenly w-64 mt-10">
-                        <Button text={"Add"} image={add} route={"/Shares/Add"} />
+                        <Button text={"Add"} image={add} onClick={() => setModalAddUser(true)} />
                         <Button text={"Delete"} image={remove}/>
                 </div>
             </div>

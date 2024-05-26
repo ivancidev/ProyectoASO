@@ -15,6 +15,7 @@ const FooterButtonStart = ({
     if (actual !== null) {
       fetchUpdateStart(actual, onReboot);
       setShowMessage(true);
+      //window.location.href="/Start-Up"
     }
   };
 
