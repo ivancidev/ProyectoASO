@@ -181,6 +181,46 @@ const fetchDirectorys = async (user) => {
   }
 };
 
+const fetchAttribute = async (data) => {
+  try {
+    const response = await fetch(`${URL_BASE}/deleteAttribute`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data)
+    });
+
+    if (response.ok) {
+      console.log("Delete attribute");
+    } else {
+      console.log("Not delete attribute");
+    }
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
+
+const fetchAddAttribute = async (data) => {
+  try {
+    const response = await fetch(`${URL_BASE}/addAttribute`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data)
+    });
+
+    if (response.ok) {
+      console.log("Add attribute");
+    } else {
+      console.log("Not add attribute");
+    }
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
+
 
 export {
   fetchShares,
@@ -192,5 +232,7 @@ export {
   fetchUpdateStart,
   fetchDelete,
   fetchAdd,
-  fetchDirectorys
+  fetchDirectorys,
+  fetchAttribute,
+  fetchAddAttribute
 };
