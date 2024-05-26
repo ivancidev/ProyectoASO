@@ -25,14 +25,7 @@ export default function Identity() {
             className="border-[1px] border-zinc-500 rounded-lg p-1"
           />
         </div>
-        <div className="flex items-center">
-          <label className="mr-5">Domain Controller</label>
-          <div className="flex-col mt-10">
-            <RadioButton id= "option1" name= "option" label="Not a DC" />
-            <RadioButton id= "option1" name= "option" label="Primary(PDC)" />
-            <RadioButton id= "option3" name= "option" label="Backup(BDC)" />
-          </div>
-        </div>
+        
       </div>
       <FooterButtons title={helTextIdentity.title} description={helTextIdentity.description}/>
     </section>
