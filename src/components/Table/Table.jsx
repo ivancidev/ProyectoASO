@@ -13,6 +13,7 @@ const Table = ({
   isModalEdit,
   openDeleteModal,
   filterSystemShares,
+  handleSenG,
 }) => {
   const [oldName, setOldName] = useState("");
   const [newName, setNewName] = useState(null);
@@ -28,7 +29,7 @@ const Table = ({
           !(
             share.path.startsWith("/var") ||
             share.path.includes("%") ||
-            share.name === "home"
+            share.name === "homes"
           )
         );
       });
@@ -121,6 +122,7 @@ const Table = ({
           oldName={oldName}
           newName={newName}
           setNewName={setNewName}
+          handleSendG={handleSenG}
         />
       )}
     </>

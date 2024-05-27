@@ -9,6 +9,7 @@ import React, { useState,useEffect } from "react";
 import Button from "../../components/Buttons/Button.jsx";
 import { fetchDelete } from "../../utils/api.js";
 import { fetchShares } from "../../utils/api.js";
+import { updateGuestAccess } from "../../utils/api.js";
 export default function Shares() {
   const [shares, setShares] = useState(null);
   const [selectedShareIndex, setSelectedShareIndex] = useState(null);
@@ -59,9 +60,25 @@ export default function Shares() {
   const handleToggleGuestAccess = () => {
     const updatedShares = [...shares];
     updatedShares[selectedShareIndex].guestAccess = toggleGuestAccess ? "No" : "Yes";
-    // setShares(updatedShares);
+    //setShares(updatedShares);
     setToggleGuestAccess(!toggleGuestAccess);
   };
+
+  const handleUpdateGuestAccess = async () => {
+    try {
+      for (const share of shares) {
+        if (share.guestAccess === "Yes") {
+          await updateGuestAccess(share.name, "Yes");
+        } else {
+          await updateGuestAccess(share.name, "No");
+        }
+      }
+      alert("Guest access updated successfully");
+    } catch (error) {
+      console.error("Error updating guest access:", error);
+    }
+  };
+
 
   const handleToggleStatus = () => {
     const updatedShares = [...shares];
@@ -95,6 +112,7 @@ export default function Shares() {
           setIsModalEdit={setIsModalEdit}
           openDeleteModal={openDeleteModal}
           filterSystemShares={filterSystemShares}
+          handleSendG={handleUpdateGuestAccess}
 
         />
         <div className="flex items-center justify-between font-roboto text-sm mt-6">
@@ -142,6 +160,7 @@ export default function Shares() {
           onClose={closeDeleteModal}
           onConfirm={handleDeleteShare}
           shareName={selectedShare?.name}
+          
         />
       )}
     </>

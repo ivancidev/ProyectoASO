@@ -309,7 +309,7 @@ const fetchAddAttribute = async (data) => {
 
 const updateGuestAccess = async (shareName, guestAccess) => {
   try {
-    const response = await fetch(`${URL_BASE}/update_guest_access`, {
+    const response = await fetch(`${URL_BASE}/updateGuest`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -45,7 +45,7 @@ const EditCheck = ({ isOpen, onClose, selectedValue, selectedKey, name }) => {
         <div className="flex items-center justify-center mt-8 space-x-6">
             <button onClick={handleConfirm}
              className="w-20 py-2 bg-customHover rounded-[20px] text-white">
-               Guardar 
+               Save 
             </button>
             <button onClick={onClose}  className="w-20 py-2 border-black border-[1px] text-customHover rounded-[20px]">
                 Cancel

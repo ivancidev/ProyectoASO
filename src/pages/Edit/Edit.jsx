@@ -94,7 +94,7 @@ const Edit = ({ resource }) => {
   return (
     <section className="fixed inset-0 flex flex-col pt-28 px-10 h-screen text-customBlack bg-white">
       <HeaderLine text={resource.name} />
-      <div className="flex flex-col items-center justify-center mt-8 p-8 w-full max-w-screen-lg">
+      <div className="flex flex-col items-center justify-center mt-8 p-8 w-full">
         {isOpenAddOp && (
           <AddOption
             isOpen={isOpenAddOp}
@@ -136,21 +136,22 @@ const Edit = ({ resource }) => {
         ) : (
           ""
         )}
-        <div className="w-full max-w-screen-lg">
-          <table
-            className="w-full border border-black"
-            style={{ margin: "0 auto" }}
-          >
-            <thead>
-              <tr className="bg-customBlack text-white">
-                <th className="font-bold pr-4 py-4">Options</th>
-                <th className="font-bold pl-2 py-4">Values</th>
-              </tr>
-            </thead>
-            <tbody>{renderDetails()}</tbody>
-          </table>
+        <div className="w-[780px] max-w-screen-lg flex justify-center">
+            <table
+              className="w-full  border-[1px] border-customBlack"
+              style={{ margin: "0 auto" }}
+            >
+              <thead>
+                <tr className="bg-customBlack text-white font-roboto">
+                  <th className="font-bold pr-4 py-2">Options</th>
+                  <th className="font-bold pl-2 py-2">Values</th>
+                </tr>
+              </thead>
+              <tbody>{renderDetails()}</tbody>
+            </table>
         </div>
-        <div className="flex space-x-4 mt-4">
+      
+        <div className="flex space-x-4 mt-10">
           <Button onClick={() => setOpenAddOp(true)} text="Add" image={add} />
           <Button onClick={handleEditClick} text="Edit" image={edit} />
           <Button onClick={() => setDel(true)} text="Delete" image={remove} />
@@ -158,7 +159,7 @@ const Edit = ({ resource }) => {
         <FooterButtons
           title={helpTextEdit.title}
           description={helpTextEdit.description}
-          handleSend={handleSendData}
+          handleSendData={handleSendData}
           isButton={isButton}
         />
       </div>

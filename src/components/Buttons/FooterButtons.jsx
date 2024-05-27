@@ -9,7 +9,8 @@ const FooterButtons = ({
   oldName,
   newName,
   setNewName,
-  handleSend,
+  handleSendData,
+  handleSendG,
   isButton
 }) => {
   const [isModalHelp, setModalHelp] = useState(false);
@@ -63,7 +64,7 @@ const FooterButtons = ({
             <p>Cancel</p>
           </button>
           {isButton? (<button
-            onClick={handleSend}
+            onClick={handleSendData}
             className="hover:bg-curtomButton bg-customHover w-28 h-10 p-1 text-white rounded-[100px] flex items-center justify-center"
           >
             <p>Save</p>
