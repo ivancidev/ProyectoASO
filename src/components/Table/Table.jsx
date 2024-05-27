@@ -1,27 +1,14 @@
 import { useEffect, useState } from "react";
-import { fetchShares } from "../../utils/api";
 import Rename from "../../modals/Rename";
 import FooterButtons from "../Buttons/FooterButtons";
 import { helpTextShares } from "../../utils/helpText";
 import Edit from "../../pages/Edit/Edit";
+import { fetchShares } from "../../utils/api";
 
-const Table = ({ isModalRename, onCloseRename, isModalEdit, openDeleteModal }) => {
-  const [shares, setShares] = useState(null);
-  const [selectedShareIndex, setSelectedShareIndex] = useState(null);
+const Table = ({ shares, setShares, selectedShareIndex, setSelectedShareIndex, isModalRename, onCloseRename, isModalEdit, openDeleteModal,filterSystemShares }) => {
+  
   const [oldName, setOldName] = useState("");
   const [newName, setNewName] = useState(null);
-
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const data = await fetchShares();
-        setShares(data);
-      } catch (error) {
-        console.error("Error fetching:", error);
-      }
-    }
-    fetchData();
-  }, []);
 
   const updateShareName = (newNameResource) => {
     const updatedShares = [...shares];
@@ -36,6 +23,9 @@ const Table = ({ isModalRename, onCloseRename, isModalEdit, openDeleteModal }) =
     openDeleteModal(shares[index]); 
   };
 
+  const filteredShares = shares ? shares.filter(share => {
+    return !filterSystemShares || !(share.path.startsWith("/var") || share.path.includes("%") || share.name === "home");
+  }) : [];
   return (
     <>
       {selectedShareIndex !== null ? (
@@ -53,7 +43,7 @@ const Table = ({ isModalRename, onCloseRename, isModalEdit, openDeleteModal }) =
         resource={shares ? shares[selectedShareIndex] : {}}
       />
       ): ("")}
-      <table className="w-full font-roboto mt-4">
+      <table className="w-full font-roboto mt-6">
         <thead className="h-9">
           <tr className="bg-customBlack text-sm text-white border border-customBlack">
             <th className="text-left pl-1">Status</th>
@@ -68,8 +58,8 @@ const Table = ({ isModalRename, onCloseRename, isModalEdit, openDeleteModal }) =
       <div className="border-[1px] border-customBlack max-h-32 overflow-y-auto">
         <table className="w-full my-2 font-roboto border-collapse">
           <tbody>
-            {shares !== null
-              ? shares.map((share, index) => (
+          {filteredShares.length > 0
+              ? filteredShares.map((share, index) => (
                   <tr
                     key={index}
                     onClick={() => handleRowClick(index)}
@@ -85,10 +75,11 @@ const Table = ({ isModalRename, onCloseRename, isModalEdit, openDeleteModal }) =
                     <td className="pl-12">{share.comment}</td>
                   </tr>
                 ))
-              : "Cargando..."}
+              : "Loading..."}
           </tbody>
         </table>
       </div>
+     
       { isModalEdit == false ? (<FooterButtons
         title={helpTextShares.title}
         description={helpTextShares.description}

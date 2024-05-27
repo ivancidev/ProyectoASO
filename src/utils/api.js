@@ -71,6 +71,41 @@ const fetchLogin = async (user) => {
   }
 };
 
+const fetchWorkgroup = async () => {
+  try {
+    const response = await fetch(`${URL_BASE}/workgroup`);
+    if (!response.ok) {
+      throw new Error("Error fetching workgroup");
+    }
+    const data = await response.json();
+    return data.workgroup;
+  } catch (error) {
+    console.error("Error fetching workgroup:", error);
+    throw error;
+  }
+};
+
+const updateWorkgroup = async (newWorkgroup) => {
+  try {
+    const response = await fetch(`${URL_BASE}/workgroup`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ workgroup: newWorkgroup }),
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to update workgroup');
+    }
+
+    return await response.json();
+  } catch (error) {
+    throw new Error('Failed to update workgroup: ' + error.message);
+  }
+};
+
+
 const fetchEnable = async () => {
   try {
     const response = await fetch(`${URL_BASE}/enable`);
@@ -272,11 +307,34 @@ const fetchAddAttribute = async (data) => {
   }
 };
 
+const updateGuestAccess = async (shareName, guestAccess) => {
+  try {
+    const response = await fetch(`${URL_BASE}/update_guest_access`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ shareName, guestAccess }),
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to update guest access");
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error("Error updating guest access:", error);
+    throw error;
+  }
+};
+
 
 export {
   fetchShares,
   fetchRename,
   fetchLogin,
+  fetchWorkgroup,
+  updateWorkgroup,
   fetchStatus,
   fectchEdit,
   fetchEnable,
@@ -288,5 +346,6 @@ export {
   fetchDeleteUser,
   fetchGetUser,
   fetchAttribute,
-  fetchAddAttribute
+  fetchAddAttribute,
+  updateGuestAccess,
 };

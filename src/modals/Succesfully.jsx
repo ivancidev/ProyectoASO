@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
-const Succesfully = ({ show, onLoadingComplete, newName }) => {
-  if (!newName) return null;
+const Succesfully = ({ show, onLoadingComplete, newName, inputValue }) => {
+
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
@@ -27,7 +27,7 @@ const Succesfully = ({ show, onLoadingComplete, newName }) => {
     <div className="fixed inset-0 flex items-center justify-center bg-slate-400 bg-opacity-[0.4] z-50">
       <div className="fixed inset-0 bg-gray-900 opacity-50"></div>
       <div className="bg-white p-6 rounded-lg shadow-lg z-10">
-        <div className="text-center mb-4">Guardando...</div>
+        <div className="text-center mb-4 px-5">Saving...</div>
         <div className="w-full bg-gray-200 rounded-full h-4">
           <div
             className="bg-customHover h-4 rounded-full"

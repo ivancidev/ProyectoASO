@@ -11,7 +11,7 @@ const DeleteConfirmation = ({ isOpen, onClose, onConfirm, shareName }) => {
         >
           <img src={close} alt="close" />
         </button>
-        <h2 className="text-lg font-semibold">Confirm Delete</h2>
+        <h2 className="text-lg font-semibold text-center">Confirm Delete</h2>
         <p className="font-roboto text-base">If you delete share 
         "{shareName}" all its settings will be lost. <br />
           Really delete it?

@@ -1,4 +1,4 @@
-import iconSamba from "../../assets/iconSamba.svg";
+import iconsamba from "../../assets/iconsamba.png";
 import React, { useState } from "react";
 import { fetchLogin } from "../../utils/api";
 
@@ -33,7 +33,7 @@ const Login = () => {
           <h1 className="text-[32px] mt-16 font-secular">
             Welcome to Samba Server!
           </h1>
-          <img src={iconSamba} alt="" className="w-[100px] h-[100px] mt-10" />
+          <img src={iconsamba} alt="" className="w-[100px] h-[100px] mt-10" />
           <h4 className="text-base text-center font-roboto p-14">
             This Samba Server website will allow you to manage and display
             shared resources, through an intuitive graphical interface, for
