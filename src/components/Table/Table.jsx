@@ -1,37 +1,65 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import Rename from "../../modals/Rename";
 import FooterButtons from "../Buttons/FooterButtons";
 import { helpTextShares } from "../../utils/helpText";
 import Edit from "../../pages/Edit/Edit";
-import { fetchShares } from "../../utils/api";
 
-const Table = ({ shares, setShares, selectedShareIndex, setSelectedShareIndex, isModalRename, onCloseRename, isModalEdit, openDeleteModal,filterSystemShares }) => {
-  
+const Table = ({
+  shares,
+  setShares,
+  setSelectedShareIndex,
+  isModalRename,
+  onCloseRename,
+  isModalEdit,
+  openDeleteModal,
+  filterSystemShares,
+}) => {
   const [oldName, setOldName] = useState("");
   const [newName, setNewName] = useState(null);
+  const [filteredShares, setFilteredShares] = useState([]);
+  const [filteredSelectedShareIndex, setFilteredSelectedShareIndex] =
+    useState(null);
+
+  useEffect(() => {
+    if (shares) {
+      const filtered = shares.filter((share) => {
+        return (
+          !filterSystemShares ||
+          !(
+            share.path.startsWith("/var") ||
+            share.path.includes("%") ||
+            share.name === "home"
+          )
+        );
+      });
+      setFilteredShares(filtered);
+      setFilteredSelectedShareIndex(null);
+    }
+  }, [shares, filterSystemShares]);
 
   const updateShareName = (newNameResource) => {
     const updatedShares = [...shares];
-    setOldName(updatedShares[selectedShareIndex].name);
-    updatedShares[selectedShareIndex].name = newNameResource;
+    const actualIndex = shares.indexOf(
+      filteredShares[filteredSelectedShareIndex]
+    );
+    setOldName(updatedShares[actualIndex].name);
+    updatedShares[actualIndex].name = newNameResource;
     setNewName(newNameResource);
     setShares(updatedShares);
   };
 
   const handleRowClick = (index) => {
-    setSelectedShareIndex(index);
-    openDeleteModal(shares[index]); 
+    setFilteredSelectedShareIndex(index);
+    setSelectedShareIndex(shares.indexOf(filteredShares[index]));
+    openDeleteModal(filteredShares[index]);
   };
 
-  const filteredShares = shares ? shares.filter(share => {
-    return !filterSystemShares || !(share.path.startsWith("/var") || share.path.includes("%") || share.name === "home");
-  }) : [];
   return (
     <>
-      {selectedShareIndex !== null ? (
+      {filteredSelectedShareIndex !== null ? (
         <Rename
           isOpen={isModalRename}
-          name={shares[selectedShareIndex].name}
+          name={filteredShares[filteredSelectedShareIndex].name}
           onClose={onCloseRename}
           updateShareName={updateShareName}
           text={"Rename Share"}
@@ -39,10 +67,15 @@ const Table = ({ shares, setShares, selectedShareIndex, setSelectedShareIndex, i
       ) : (
         ""
       )}
-      {isModalEdit && selectedShareIndex !== null ? (<Edit
-        resource={shares ? shares[selectedShareIndex] : {}}
-      />
-      ): ("")}
+      {isModalEdit && filteredSelectedShareIndex !== null ? (
+        <Edit
+          resource={
+            filteredShares ? filteredShares[filteredSelectedShareIndex] : {}
+          }
+        />
+      ) : (
+        ""
+      )}
       <table className="w-full font-roboto mt-6">
         <thead className="h-9">
           <tr className="bg-customBlack text-sm text-white border border-customBlack">
@@ -58,17 +91,19 @@ const Table = ({ shares, setShares, selectedShareIndex, setSelectedShareIndex, i
       <div className="border-[1px] border-customBlack max-h-32 overflow-y-auto">
         <table className="w-full my-2 font-roboto border-collapse">
           <tbody>
-          {filteredShares.length > 0
+            {filteredShares.length > 0
               ? filteredShares.map((share, index) => (
                   <tr
                     key={index}
                     onClick={() => handleRowClick(index)}
-                    className={` text-[14px] text-custumBlack hover:bg-green-200 cursor-pointer ${
-                      selectedShareIndex == index ? "bg-green-300" : ""
+                    className={`text-[14px] text-customBlack hover:bg-green-200 cursor-pointer ${
+                      filteredSelectedShareIndex === index ? "bg-green-300" : ""
                     }`}
                   >
                     <td className="pl-1">{share.status}</td>
-                    <td className="pl-8">{share.readOnly? share.readOnly: 'Yes'}</td>
+                    <td className="pl-8">
+                      {share.readOnly ? share.readOnly : "Yes"}
+                    </td>
                     <td className="pl-26">{share.name}</td>
                     <td className="pl-8">{share.path}</td>
                     <td className="pl-28">{share.guestAccess}</td>
@@ -79,14 +114,15 @@ const Table = ({ shares, setShares, selectedShareIndex, setSelectedShareIndex, i
           </tbody>
         </table>
       </div>
-     
-      { isModalEdit == false ? (<FooterButtons
-        title={helpTextShares.title}
-        description={helpTextShares.description}
-        oldName = {oldName}
-        newName = {newName}
-        setNewName = {setNewName}
-      />): ""}
+      {!isModalEdit && (
+        <FooterButtons
+          title={helpTextShares.title}
+          description={helpTextShares.description}
+          oldName={oldName}
+          newName={newName}
+          setNewName={setNewName}
+        />
+      )}
     </>
   );
 };
