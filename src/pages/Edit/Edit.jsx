@@ -76,8 +76,11 @@ const Edit = ({ resource }) => {
   const handleDelete = async () => {
     if (selectedKey !== null) {
       const deletedOption = selectedKey;
-      const data = { resourceName: resource.name, attributeName: deletedOption };
-      console.log(data)
+      const data = {
+        resourceName: resource.name,
+        attributeName: deletedOption,
+      };
+      console.log(data);
       try {
         await fetchAttribute(data);
         setIsModalSuccesfully(true);
@@ -87,14 +90,17 @@ const Edit = ({ resource }) => {
       }
     }
   };
-  
 
   return (
-    <section className="fixed inset-0 flex-col pt-28 px-10 h-screen text-customBlack bg-white">
+    <section className="fixed inset-0 flex flex-col pt-28 px-10 h-screen text-customBlack bg-white">
       <HeaderLine text={resource.name} />
       <div className="flex flex-col items-center justify-center mt-8 p-8 w-full max-w-screen-lg">
         {isOpenAddOp && (
-          <AddOption isOpen={isOpenAddOp} onClose={() => setOpenAddOp(false)} resourceName={resource.name} />
+          <AddOption
+            isOpen={isOpenAddOp}
+            onClose={() => setOpenAddOp(false)}
+            resourceName={resource.name}
+          />
         )}
         {isEditInput && (
           <EditInput
@@ -130,12 +136,15 @@ const Edit = ({ resource }) => {
         ) : (
           ""
         )}
-        <div className="w-full">
-          <table className="w-full border border-black">
+        <div className="w-full max-w-screen-lg">
+          <table
+            className="w-full border border-black"
+            style={{ margin: "0 auto" }}
+          >
             <thead>
               <tr className="bg-customBlack text-white">
-                <th className="font-bold pr-4">Options</th>
-                <th className="font-bold pl-2">Values</th>
+                <th className="font-bold pr-4 py-4">Options</th>
+                <th className="font-bold pl-2 py-4">Values</th>
               </tr>
             </thead>
             <tbody>{renderDetails()}</tbody>
