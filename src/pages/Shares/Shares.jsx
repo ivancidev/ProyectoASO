@@ -1,10 +1,6 @@
-import filter from "./assets/filter.svg";
-import search from "../../assets/search.svg";
 import add from "../../assets/add.svg";
-import plus from "./assets/plus.svg";
 import edit from "../../assets/edit.svg";
 import remove from "../../assets/delete.svg";
-import minus from "./assets/minus.svg";
 import RadioButton from "../../components/Buttons/RadioButton.jsx";
 import HeaderLine from "../../components/SectionHeaderline/HeaderLine.jsx";
 import DeleteConfirmation from "../../modals/DeleteConfirm.jsx";
@@ -13,11 +9,9 @@ import React, { useState,useEffect } from "react";
 import Button from "../../components/Buttons/Button.jsx";
 import { fetchDelete } from "../../utils/api.js";
 import { fetchShares } from "../../utils/api.js";
-import { updateGuestAccess } from "../../utils/api.js";
 export default function Shares() {
   const [shares, setShares] = useState(null);
   const [selectedShareIndex, setSelectedShareIndex] = useState(null);
-  const [contador, setContador] = useState(0);
   const [isModalDelete, setModalDelete] = useState(false);
   const [isModalRename, setModalRename] = useState(false);
   const [isModalEdit, setIsModalEdit] = useState(false);
@@ -65,14 +59,14 @@ export default function Shares() {
   const handleToggleGuestAccess = () => {
     const updatedShares = [...shares];
     updatedShares[selectedShareIndex].guestAccess = toggleGuestAccess ? "No" : "Yes";
-    setShares(updatedShares);
+    // setShares(updatedShares);
     setToggleGuestAccess(!toggleGuestAccess);
   };
 
   const handleToggleStatus = () => {
     const updatedShares = [...shares];
     updatedShares[selectedShareIndex].status = toggleStatus ? "Enable" : "Disable";
-    setShares(updatedShares);
+    // setShares(updatedShares);
     setToggleStatus(!toggleStatus);
   };
 
@@ -94,7 +88,6 @@ export default function Shares() {
         <Table
           shares={shares}
           setShares={setShares}
-          selectedShareIndex={selectedShareIndex}
           setSelectedShareIndex={setSelectedShareIndex}
           isModalRename={isModalRename}
           onCloseRename={() => setModalRename(false)}
