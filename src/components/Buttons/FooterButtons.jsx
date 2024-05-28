@@ -69,7 +69,7 @@ const FooterButtons = ({
           >
             <p>Save</p>
           </button>): (<button
-            onClick={handleClick}
+            onClick={handleSendG}
             className="hover:bg-curtomButton bg-customHover w-28 h-10 p-1 text-white rounded-[100px] flex items-center justify-center"
           >
             <p>Ok</p>

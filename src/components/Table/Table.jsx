@@ -13,7 +13,7 @@ const Table = ({
   isModalEdit,
   openDeleteModal,
   filterSystemShares,
-  handleSenG,
+  handleSendG,
 }) => {
   const [oldName, setOldName] = useState("");
   const [newName, setNewName] = useState(null);
@@ -122,7 +122,7 @@ const Table = ({
           oldName={oldName}
           newName={newName}
           setNewName={setNewName}
-          handleSendG={handleSenG}
+          handleSendG={handleSendG}
         />
       )}
     </>

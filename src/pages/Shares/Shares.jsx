@@ -73,7 +73,7 @@ export default function Shares() {
           await updateGuestAccess(share.name, "No");
         }
       }
-      alert("Guest access updated successfully");
+     
     } catch (error) {
       console.error("Error updating guest access:", error);
     }
